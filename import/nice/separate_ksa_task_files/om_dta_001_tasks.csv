@@ -1,0 +1,18 @@
+Operate and Maintain (OM),"Database Administrator (OM-DTA-001): Administers databases and/or data management systems that allow for the secure storage, query, protection, and utilization of data. Click to view the Master Task List
+Data Administration (DTA),,Click to return to the Table of Contents
+,,OPM 421
+Task ID,Task,
+T0008,Analyze and plan for anticipated changes in data capacity requirements.,
+T0137,Maintain database management systems software.,
+T0139,Maintain directory replication services that enable information to replicate automatically from rear servers to forward units via optimized routing.,
+T0140,"Maintain information exchanges through publish, subscribe, and alert functions that enable users to send and receive critical information as required. 
+T0146,"Manage the compilation, cataloging, caching, distribution, and retrieval of data. 
+T0152,Monitor and maintain databases to ensure optimal performance.,
+T0162,Perform backup and recovery of databases to ensure data integrity.,
+T0210,Provide recommendations on new database technologies and architectures.,
+T0305,"Performs configuration management, problem management, capacity management, and financial management for databases and data management systems. 
+T0306,"Supports incident management, service-level management, change management, release management, continuity management, and availability management for databases and data management systems. 
+T0330,Maintain assured message delivery systems. ,
+T0422,"Implement data management standards, requirements, and specifications. 
+T0459,Implement data mining and data warehousing applications. ,
+T0490,Install and configure database management systems and software.,

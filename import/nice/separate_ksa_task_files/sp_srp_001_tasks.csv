@@ -1,0 +1,22 @@
+Securely Provision (SP),Systems Requirements Planner (SP-SRP-001): Consults with customers to evaluate functional requirements and translate functional requirements into technical solutions.,Click to view the Master Task List
+Systems Requirements Planning (SRP),,Click to return to the Table of Contents
+,,OPM 641
+Task ID,Task,
+T0033,"Conduct risk analysis, feasibility study, and/or trade-off analysis to develop, document, and refine functional requirements and specifications. 
+T0039,Consult with customers to evaluate functional requirements.,
+T0045,"Coordinate with systems architects and developers, as needed, to provide oversight in the development of design solutions. 
+T0052,Define project scope and objectives based on customer requirements.,
+T0062,"Develop and document requirements, capabilities, and constraints for design procedures and processes. 
+T0127,Integrate and align information security and/or cybersecurity policies to ensure that system analysis meets security requirements.,
+T0156,Oversee and make recommendations regarding configuration management.,
+T0174,Perform needs analysis to determine opportunities for new and improved business process solutions.,
+T0191,Prepare use cases to justify the need for specific information technology (IT) solutions.,
+T0235,Translate functional requirements into technical solutions.,
+T0273,"Develop and document supply chain risks for critical system elements, as appropriate. 
+T0300,Develop and document User Experience (UX) requirements including information architecture and user interface requirements.,
+T0313,Design and document quality standards. ,
+T0325,Document a system's purpose and preliminary system security concept of operations.,
+T0334,"Ensure that all systems components can be integrated and aligned (e.g., procedures, databases, policies, software, and hardware).  
+T0454,Define baseline security requirements in accordance with applicable guidelines.,
+T0463,Develop cost estimates for new or modified system(s).,
+T0497,Manage the information technology (IT) planning process to ensure that developed solutions meet customer requirements.,

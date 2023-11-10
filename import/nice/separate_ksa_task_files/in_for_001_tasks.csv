@@ -1,0 +1,37 @@
+Investigate (IN),"Law Enforcement/Counterintelligence Forensics Analyst (IN-FOR-001): Conducts detailed investigations on computer-based crimes establishing documentary or physical evidence, to include digital media and logs associated with cyber intrusion incidents. Click to view the Master Task List
+Digital Forensics (FOR),,Click to return to the Table of Contents
+,,OPM 211
+Task ID,Task,
+T0027,"Conduct analysis of log files, evidence, and other information to determine best methods for identifying the perpetrator(s) of a network intrusion. 
+T0036,"Confirm what is known about an intrusion and discover new information, if possible, after identifying intrusion via dynamic analysis. 
+T0048,"Create a forensically sound duplicate of the evidence (i.e., forensic image) that ensures the original evidence is not unintentionally modified, to use for data recovery and analysis processes. This includes, but is not limited to, hard drives, floppy diskettes, CDs, PDAs, mobile phones, GPS, and all tape formats. 
+T0075,Provide technical summary of findings in accordance with established reporting procedures.,
+T0087,Ensure that chain of custody is followed for all digital media acquired in accordance with the Federal Rules of Evidence.,
+T0103,Examine recovered data for information of relevance to the issue at hand.,
+T0113,Identify digital evidence for examination and analysis in such a way as to avoid unintentional alteration.,
+T0120,"Identify, collect, and seize documentary or physical evidence, to include digital media and logs associated with cyber intrusion incidents, investigations, and operations. 
+T0165,"Perform dynamic analysis to boot an “image” of a drive (without necessarily having the original drive) to see the intrusion as the user may have seen it, in a native environment. 
+T0167,Perform file signature analysis.,
+T0168,Perform hash comparison against established database.,
+T0172,"Perform real-time forensic analysis (e.g., using Helix in conjunction with LiveView). 
+T0173,Perform timeline analysis.,
+T0179,Perform static media analysis.,
+T0182,"Perform tier 1, 2, and 3 malware analysis. 
+T0190,"Prepare digital media for imaging by ensuring data integrity (e.g., write blockers in accordance with standard operating procedures). 
+T0193,Process crime scenes.,
+T0212,Provide technical assistance on digital evidence matters to appropriate personnel.,
+T0216,Recognize and accurately report forensic artifacts indicative of a particular operating system.,
+T0238,"Extract data using data carving techniques (e.g., Forensic Tool Kit [FTK], Foremost). 
+T0240,Capture and analyze network traffic associated with malicious activities using network monitoring tools.,
+T0241,"Use specialized equipment and techniques to catalog, document, extract, collect, package, and preserve digital evidence. 
+T0246,"Write and publish cyber defense techniques, guidance, and reports on incident findings to appropriate constituencies. 
+T0253,Conduct cursory binary analysis.,
+T0285,Perform virus scanning on digital media.,
+T0286,Perform file system forensic analysis.,
+T0287,"Perform static analysis to mount an ""image"" of a drive (without necessarily having the original drive). 
+T0288,Perform static malware analysis.,
+T0289,Utilize deployable forensics toolkit to support operations as necessary.,
+T0432,"Collect and analyze intrusion artifacts (e.g., source code, malware, and system configuration) and use discovered data to enable mitigation of potential cyber defense incidents within the enterprise. 
+T0439,"Detect and analyze encrypted data, stenography, alternate data streams and other forms of concealed data. 
+T0471,"Document original condition of digital and/or associated evidence (e.g., via digital photographs, written reports, hash function checking). 
+T0532,"Review forensic images and other data sources (e.g., volatile data) for recovery of potentially relevant information. 

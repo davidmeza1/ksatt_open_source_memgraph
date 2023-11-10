@@ -1,0 +1,66 @@
+Operate and Maintain (OM),"Systems Security Analyst (OM-ANA-001): Responsible for the analysis and development of the integration, testing, operations, and maintenance of systems security. Click to view the Master KSA List
+Systems Analysis (ANA),,Click to return to the Table of Contents
+,,OPM 461
+KSA ID,KSA,
+Knowledge,,
+K0001,"Knowledge of computer networking concepts and protocols, and network security methodologies.  
+K0002,"Knowledge of risk management processes (e.g., methods for assessing and mitigating risk). 
+K0003,"Knowledge of laws, regulations, policies, and ethics as they relate to cybersecurity and privacy.  
+K0004,Knowledge of cybersecurity and privacy principles.,
+K0005,Knowledge of cyber threats and vulnerabilities. ,
+K0006,Knowledge of specific operational impacts of cybersecurity lapses.,
+K0015,Knowledge of computer algorithms.,
+K0018,Knowledge of encryption algorithms ,
+K0019,Knowledge of cryptography and cryptographic key management concepts ,
+K0024,Knowledge of database systems.,
+K0035,"Knowledge of installation, integration, and optimization of system components. 
+K0036,Knowledge of human-computer interaction principles.,
+K0040,"Knowledge of vulnerability information dissemination sources (e.g., alerts, advisories, errata, and bulletins). 
+K0044,"Knowledge of cybersecurity and privacy principles and organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+K0049,"Knowledge of information technology (IT) security principles and methods (e.g., firewalls, demilitarized zones, encryption).  
+K0052,"Knowledge of mathematics (e.g. logarithms, trigonometry, linear algebra, calculus, statistics, and operational analysis). 
+K0056,"Knowledge of network access, identity, and access management (e.g., public key infrastructure, Oauth, OpenID, SAML, SPML). 
+K0060,Knowledge of operating systems.,
+K0061,"Knowledge of how traffic flows across the network (e.g., Transmission Control Protocol [TCP] and Internet Protocol [IP], Open System Interconnection Model [OSI], Information Technology Infrastructure Library, current version [ITIL]). 
+K0063,Knowledge of parallel and distributed computing concepts.,
+K0075,"Knowledge of security system design tools, methods, and techniques. 
+K0082,Knowledge of software engineering.,
+K0093,"Knowledge of telecommunications concepts (e.g., Communications channel, Systems Link Budgeting, Spectral efficiency, Multiplexing). 
+K0102,Knowledge of the systems engineering process.,
+K0179,"Knowledge of network security architecture concepts including topology, protocols, components, and principles (e.g., application of defense-in-depth). 
+K0180,"Knowledge of network systems management principles, models, methods (e.g., end-to-end systems performance monitoring), and tools. 
+K0200,"Knowledge of service management concepts for networks and related standards (e.g., Information Technology Infrastructure Library, current version [ITIL]). 
+K0203,"Knowledge of security models (e.g., Bell-LaPadula model, Biba integrity model, Clark-Wilson integrity model). 
+K0227,Knowledge of various types of computer architectures.,
+K0260,Knowledge of Personally Identifiable Information (PII) data security standards.,
+K0261,Knowledge of Payment Card Industry (PCI) data security standards.,
+K0262,Knowledge of Personal Health Information (PHI) data security standards.,
+K0263,"Knowledge of information technology (IT) risk management policies, requirements, and procedures. 
+K0266,Knowledge of how to evaluate the trustworthiness of the supplier and/or product.,
+K0267,"Knowledge of laws, policies, procedures, or governance relevant to cybersecurity for critical infrastructures. 
+K0275,Knowledge of configuration management techniques.,
+K0276,Knowledge of security management.,
+K0281,Knowledge of information technology (IT) service catalogues.,
+K0284,Knowledge of developing and applying user credential management system.,
+K0285,Knowledge of implementing enterprise key escrow systems to support data-at-rest encryption.,
+K0287,Knowledge of an organization's information classification program and procedures for information compromise.,
+K0290,Knowledge of systems security testing and evaluation methods.,
+K0297,Knowledge of countermeasure design for identified security risks.,
+K0322,Knowledge of embedded systems.,
+K0333,"Knowledge of network design processes, to include understanding of security objectives, operational objectives, and trade-offs. 
+K0339,Knowledge of how to use network analysis tools to identify vulnerabilities.,
+,,
+Skills,,
+S0024,Skill in designing the integration of hardware and software solutions.,
+S0027,"Skill in determining how a security system should work (including its resilience and dependability capabilities) and how changes in conditions, operations, or the environment will affect these outcomes. 
+S0031,Skill in developing and applying security system access controls.,
+S0036,Skill in evaluating the adequacy of security designs.,
+S0060,"Skill in writing code in a currently supported programming language (e.g., Java, C++). 
+S0141,Skill in assessing security systems designs.,
+S0147,"Skill in assessing security controls based on cybersecurity principles and tenets. (e.g., CIS CSC, NIST SP 800-53, Cybersecurity Framework, etc.). 
+S0167,"Skill in recognizing vulnerabilities in security systems. (e.g., vulnerability and compliance scanning). 
+S0367,"Skill to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+,,
+Abilities,,
+A0015,Ability to conduct vulnerability scans and recognize vulnerabilities in security systems.,
+A0123,"Ability to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 

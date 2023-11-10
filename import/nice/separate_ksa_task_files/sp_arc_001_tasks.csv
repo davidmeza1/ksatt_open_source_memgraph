@@ -1,0 +1,23 @@
+Securely Provision (SP),"Enterprise Architect (SP-ARC-001): Develops and maintains business, systems, and information processes to support enterprise mission needs; develops information technology (IT) rules and requirements that describe baseline and target architectures. Click to view the Master Task List
+Systems Architecture (ARC),,Click to return to the Table of Contents
+,,OPM 651
+Task ID,Task,
+T0051,"Define appropriate levels of system availability based on critical system functions and ensure that system requirements identify appropriate disaster recovery and continuity of operations requirements to include any appropriate fail-over/alternate site requirements, backup requirements, and material supportability requirements for system recover/restoration. 
+T0084,Employ secure configuration management processes.,
+T0090,Ensure that acquired or developed system(s) and architecture(s) are consistent with organization's cybersecurity architecture guidelines.,
+T0108,Identify and prioritize critical business functions in collaboration with organizational stakeholders.,
+T0196,"Provide advice on project costs, design concepts, or design changes. 
+T0205,"Provide input to the Risk Management Framework process activities and related documentation (e.g., system life-cycle support plans, concept of operations, operational procedures, and maintenance training materials). 
+T0307,"Analyze candidate architectures, allocate security services, and select security mechanisms.  
+T0314,"Develop a system security context, a preliminary system security Concept of Operations (CONOPS), and define baseline system security requirements in accordance with applicable cybersecurity requirements.  
+T0328,Evaluate security architectures and designs to determine the adequacy of security design and architecture proposed or provided in response to requirements contained in acquisition documents. ,
+T0338,Write detailed functional specifications that document the architecture development process. ,
+T0427,Analyze user needs and requirements to plan architecture.,
+T0440,Capture and integrate essential system capabilities or business functions required for partial or full system restoration after a catastrophic failure event.,
+T0448,Develop enterprise architecture or system components required to meet user needs.,
+T0473,Document and update as necessary all definition and architecture activities.,
+T0517,Integrate results regarding the identification of gaps in security architecture.,
+T0521,Plan implementation strategy to ensure that enterprise components can be integrated and aligned.,
+T0542,Translate proposed capabilities into technical requirements.,
+T0555,Document how the implementation of a new system or new interface between systems impacts the current and target environment including but not limited to security posture.,
+T0557,Integrate key management functions as related to cyberspace.,

@@ -1,0 +1,25 @@
+Securely Provision (SP),"Security Control Assessor (SP-RSK-002): Conducts independent comprehensive assessments of the management, operational, and technical security controls and control enhancements employed within or inherited by an information technology (IT) system to determine the overall effectiveness of the controls (as defined in NIST SP 800-37). Click to view the Master Task List
+Risk Management (RSK),,Click to return to the Table of Contents
+,,OPM 612
+Task ID,Task,
+T0145,"Manage and approve Accreditation Packages (e.g., ISO/IEC 15026-2). 
+T0184,Plan and conduct security authorization reviews and assurance case development for initial installation of systems and networks.,
+T0221,"Review authorization and assurance documents to confirm that the level of risk is within acceptable limits for each software application, system, and network. 
+T0244,"Verify that application software/network/system security postures are implemented as stated, document deviations, and recommend required actions to correct those deviations. 
+T0251,"Develop security compliance processes and/or audits for external services (e.g., cloud service providers, data centers). 
+T0371,"Establish acceptable limits for the software application, network, or system. 
+T0495,"Manage Accreditation Packages (e.g., ISO/IEC 15026-2). 
+T0177,"Perform security reviews, identify gaps in security architecture, and develop a security risk management plan. 
+T0178,Perform security reviews and identify security gaps in security architecture resulting in recommendations for inclusion in the risk mitigation strategy.,
+T0181,"Perform risk analysis (e.g., threat, vulnerability, and probability of occurrence) whenever an application or system undergoes a major change. 
+T0205,"Provide input to the Risk Management Framework process activities and related documentation (e.g., system life-cycle support plans, concept of operations, operational procedures, and maintenance training materials). 
+T0243,Verify and update security documentation reflecting the application/system security design features.,
+T0255,"Participate in Risk Governance process to provide security risks, mitigations, and input on other technical risk. 
+T0264,"Ensure that plans of actions and milestones or remediation plans are in place for vulnerabilities identified during risk assessments, audits, inspections, etc. 
+T0265,Assure successful implementation and functionality of security requirements and appropriate information technology (IT) policies and procedures that are consistent with the organization's mission and goals.,
+T0268,Define and document how the implementation of a new system or new interfaces between systems impacts the security posture of the current environment.,
+T0272,Ensure that security design and cybersecurity development activities are properly documented (providing a functional description of security implementation) and updated as necessary.,
+T0275,"Support necessary compliance activities (e.g., ensure that system security configuration guidelines are followed, compliance monitoring occurs). 
+T0277,"Ensure that all acquisitions, procurements, and outsourcing efforts address information security requirements consistent with organization goals. 
+T0309,Assess the effectiveness of security controls.,
+T0344,Assess all the configuration management (change configuration/release management) processes. ,

@@ -1,0 +1,29 @@
+Securely Provision (SP),"Secure Software Assessor (SP-DEV-002): Analyzes the security of new or existing computer applications, software, or specialized utility programs and provides actionable results. Click to view the Master Task List
+Software Development (DEV),,Click to return to the Table of Contents
+,,OPM 622
+Task ID,Task,
+T0013,"Apply coding and testing standards, apply security testing tools including ""'fuzzing"" static-analysis code scanning tools, and conduct code reviews. 
+T0014,Apply secure code documentation.,
+T0022,"Capture security controls used during the requirements phase to integrate security within the process, to identify key security objectives, and to maximize software security while minimizing disruption to plans and schedules. 
+T0038,Develop threat model based on customer interviews and requirements.,
+T0040,Consult with engineering staff to evaluate interface between hardware and software.,
+T0100,"Evaluate factors such as reporting formats required, cost constraints, and need for security restrictions to determine hardware configuration. 
+T0111,Identify basic common coding flaws at a high level.,
+T0117,Identify security implications and apply methodologies within centralized and decentralized environments across the enterprise’s computer systems in software development.,
+T0118,Identify security issues around steady state operation and management of software and incorporate security measures that must be taken when a product reaches its end of life.,
+T0171,Perform integrated quality assurance testing for security functionality and resiliency attack.,
+T0181,"Perform risk analysis (e.g., threat, vulnerability, and probability of occurrence) whenever an application or system undergoes a major change. 
+T0217,"Address security implications in the software acceptance phase including completion criteria, risk acceptance and documentation, common criteria, and methods of independent testing. 
+T0228,"Store, retrieve, and manipulate data for analysis of system capabilities and requirements. 
+T0236,"Translate security requirements into application design elements including documenting the elements of the software attack surfaces, conducting threat modeling, and defining any specific security criteria. 
+T0266,Perform penetration testing as required for new or updated applications.,
+T0311,Consult with customers about software system design and maintenance. ,
+T0324,Direct software programming and development of documentation.,
+T0337,"Supervise and assign work to programmers, designers, technologists and technicians, and other engineering and scientific personnel. 
+T0424,Analyze and provide information to stakeholders that will support the development of security application or modification of an existing security application.,
+T0428,Analyze security needs and software requirements to determine feasibility of design within time and cost constraints and security mandates.,
+T0436,Conduct trial runs of programs and software applications to ensure that the desired information is produced and instructions and security levels are correct. ,
+T0456,Develop secure software testing and validation procedures.,
+T0457,"Develop system testing and validation procedures, programming, and documentation. 
+T0516,"Perform secure program testing, review, and/or assessment to identify potential flaws in codes and mitigate vulnerabilities. 
+T0554,Determine and document software patches or the extent of releases that would leave software vulnerable.,

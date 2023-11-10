@@ -1,0 +1,38 @@
+Protect and Defend (PR),"Cyber Defense Analyst (PR-CDA-001): Uses data collected from a variety of cyber defense tools (e.g., IDS alerts, firewalls, network traffic logs) to analyze events that occur within their environments for the purposes of mitigating threats. Click to view the Master Task List
+Cyber Defense Analysis (CDA),,Click to return to the Table of Contents
+,,OPM 511
+Task ID,Task,
+T0020,Develop content for cyber defense tools.,
+T0023,Characterize and analyze network traffic to identify anomalous activity and potential threats to network resources.,
+T0043,Coordinate with enterprise-wide cyber defense staff to validate network alerts.,
+T0088,Ensure that cybersecurity-enabled products or other compensating security control technologies reduce identified risk to an acceptable level.,
+T0155,"Document and escalate incidents (including event’s history, status, and potential impact for further action) that may cause ongoing and immediate impact to the environment. 
+T0164,Perform cyber defense trend analysis and reporting.,
+T0166,Perform event correlation using information gathered from a variety of sources within the enterprise to gain situational awareness and determine the effectiveness of an observed attack.,
+T0178,Perform security reviews and identify security gaps in security architecture resulting in recommendations for inclusion in the risk mitigation strategy.,
+T0187,Plan and recommend modifications or adjustments based on exercise results or system environment.,
+T0198,Provide daily summary reports of network events and activity relevant to cyber defense practices.,
+T0214,Receive and analyze network alerts from various sources within the enterprise and determine possible causes of such alerts.,
+T0258,"Provide timely detection, identification, and alerting of possible attacks/intrusions, anomalous activities, and misuse activities and distinguish these incidents and events from benign activities. 
+T0259,Use cyber defense tools for continual monitoring and analysis of system activity to identify malicious activity.,
+T0260,"Analyze identified malicious activity to determine weaknesses exploited, exploitation methods, effects on system and information. 
+T0290,"Determine tactics, techniques, and procedures (TTPs) for intrusion sets. 
+T0291,Examine network topologies to understand data flows through the network.,
+T0292,Recommend computing environment vulnerability corrections.,
+T0293,Identify and analyze anomalies in network traffic using metadata.,
+T0294,"Conduct research, analysis, and correlation across a wide variety of all source data sets (indications and warnings). 
+T0295,Validate intrusion detection system (IDS) alerts against network traffic using packet analysis tools.,
+T0296,Isolate and remove malware.,
+T0297,Identify applications and operating systems of a network device based on network traffic.,
+T0298,Reconstruct a malicious attack or activity based off network traffic.,
+T0299,Identify network mapping and operating system (OS) fingerprinting activities.,
+T0310,Assist in the construction of signatures which can be implemented on cyber defense network tools in response to new or observed threats within the network environment or enclave. ,
+T0332,"Notify designated managers, cyber incident responders, and cybersecurity service provider team members of suspected cyber incidents and articulate the event's history, status, and potential impact for further action in accordance with the organization's cyber incident response plan. 
+T0469,Analyze and report organizational security posture trends.,
+T0470,Analyze and report system security posture trends.,
+T0475,Assess adequate access controls based on principles of least privilege and need-to-know.,
+T0503,"Monitor external data sources (e.g., cyber defense vendor sites, Computer Emergency Response Teams, Security Focus) to maintain currency of cyber defense threat condition and determine which security issues may have an impact on the enterprise. 
+T0504,Assess and monitor cybersecurity related to system implementation and testing practices.,
+T0526,Provides cybersecurity recommendations to leadership based on significant threats and vulnerabilities.,
+T0545,Work with stakeholders to resolve computer security incidents and vulnerability compliance.,
+T0548,"Provide advice and input for Disaster Recovery, Contingency, and Continuity of Operations Plans. 

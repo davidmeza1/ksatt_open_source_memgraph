@@ -1,0 +1,89 @@
+Securely Provision (SP),"Systems Developer (SP-SYS-002): Designs, develops, tests, and evaluates information systems throughout the systems development life cycle. Click to view the Master KSA List
+Systems Development (SYS),,Click to return to the Table of Contents
+,,OPM 632
+KSA ID,KSA,
+Knowledge,,
+K0001,"Knowledge of computer networking concepts and protocols, and network security methodologies.  
+K0002,"Knowledge of risk management processes (e.g., methods for assessing and mitigating risk). 
+K0003,"Knowledge of laws, regulations, policies, and ethics as they relate to cybersecurity and privacy.  
+K0004,Knowledge of cybersecurity and privacy principles.,
+K0005,Knowledge of cyber threats and vulnerabilities. ,
+K0006,Knowledge of specific operational impacts of cybersecurity lapses.,
+K0015,Knowledge of computer algorithms.,
+K0018,Knowledge of encryption algorithms ,
+K0024,Knowledge of database systems.,
+K0027,Knowledge of organization's enterprise information security architecture.,
+K0028,Knowledge of organization's evaluation and validation requirements.,
+K0030,"Knowledge of electrical engineering as applied to computer architecture (e.g., circuit boards, processors, chips, and computer hardware). 
+K0032,Knowledge of resiliency and redundancy.,
+K0035,"Knowledge of installation, integration, and optimization of system components. 
+K0036,Knowledge of human-computer interaction principles.,
+K0044,"Knowledge of cybersecurity and privacy principles and organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+K0045,Knowledge of information security systems engineering principles (NIST SP 800-160).,
+K0049,"Knowledge of information technology (IT) security principles and methods (e.g., firewalls, demilitarized zones, encryption).  
+K0050,Knowledge of local area and wide area networking principles and concepts including bandwidth management.,
+K0052,"Knowledge of mathematics (e.g. logarithms, trigonometry, linear algebra, calculus, statistics, and operational analysis). 
+K0055,Knowledge of microprocessors.,
+K0056,"Knowledge of network access, identity, and access management (e.g., public key infrastructure, Oauth, OpenID, SAML, SPML). 
+K0060,Knowledge of operating systems.,
+K0061,"Knowledge of how traffic flows across the network (e.g., Transmission Control Protocol [TCP] and Internet Protocol [IP], Open System Interconnection Model [OSI], Information Technology Infrastructure Library, current version [ITIL]). 
+K0063,Knowledge of parallel and distributed computing concepts.,
+K0065,Knowledge of policy-based and risk adaptive access controls.,
+K0066,Knowledge of Privacy Impact Assessments.,
+K0067,Knowledge of process engineering concepts.,
+K0073,"Knowledge of secure configuration management techniques. (e.g., Security Technical Implementation Guides (STIGs), cybersecurity best practices on cisecurity.org). 
+K0081,"Knowledge of software development models (e.g., Waterfall Model, Spiral Model). 
+K0082,Knowledge of software engineering.,
+K0084,Knowledge of structured analysis principles and methods.,
+K0086,"Knowledge of system design tools, methods, and techniques, including automated systems analysis and design tools. 
+K0087,"Knowledge of system software and organizational design standards, policies, and authorized approaches (e.g., International Organization for Standardization [ISO] guidelines) relating to system design. 
+K0090,"Knowledge of system life cycle management principles, including software security and usability. 
+K0091,Knowledge of systems testing and evaluation methods.,
+K0093,"Knowledge of telecommunications concepts (e.g., Communications channel, Systems Link Budgeting, Spectral efficiency, Multiplexing). 
+K0102,Knowledge of the systems engineering process.,
+K0126,Knowledge of Supply Chain Risk Management Practices (NIST SP 800-161),
+K0139,Knowledge of interpreted and compiled computer languages.,
+K0169,"Knowledge of information technology (IT) supply chain security and supply chain risk management policies, requirements, and procedures. 
+K0170,Knowledge of critical infrastructure systems with information communication technology that were designed without system security considerations.,
+K0179,"Knowledge of network security architecture concepts including topology, protocols, components, and principles (e.g., application of defense-in-depth). 
+K0180,"Knowledge of network systems management principles, models, methods (e.g., end-to-end systems performance monitoring), and tools. 
+K0200,"Knowledge of service management concepts for networks and related standards (e.g., Information Technology Infrastructure Library, current version [ITIL]). 
+K0203,"Knowledge of security models (e.g., Bell-LaPadula model, Biba integrity model, Clark-Wilson integrity model). 
+K0207,Knowledge of circuit analysis.,
+K0212,Knowledge of cybersecurity-enabled software products.,
+K0227,Knowledge of various types of computer architectures.,
+K0260,Knowledge of Personally Identifiable Information (PII) data security standards.,
+K0261,Knowledge of Payment Card Industry (PCI) data security standards.,
+K0262,Knowledge of Personal Health Information (PHI) data security standards.,
+K0276,Knowledge of security management.,
+K0287,Knowledge of an organization's information classification program and procedures for information compromise.,
+K0297,Knowledge of countermeasure design for identified security risks.,
+K0308,Knowledge of cryptology.,
+K0322,Knowledge of embedded systems.,
+K0325,"Knowledge of Information Theory (e.g., source coding, channel coding, algorithm complexity theory, and data compression). 
+K0332,"Knowledge of network protocols such as TCP/IP, Dynamic Host Configuration, Domain Name System (DNS), and directory services. 
+K0333,"Knowledge of network design processes, to include understanding of security objectives, operational objectives, and trade-offs. 
+K0336,Knowledge of access authentication methods.,
+,,
+Skills,,
+S0018,Skill in creating policies that reflect system security objectives.,
+S0022,Skill in designing countermeasures to identified security risks.,
+S0023,Skill in designing security controls based on cybersecurity principles and tenets.,
+S0024,Skill in designing the integration of hardware and software solutions.,
+S0025,"Skill in detecting host and network based intrusions via intrusion detection technologies (e.g., Snort). 
+S0031,Skill in developing and applying security system access controls.,
+S0034,"Skill in discerning the protection needs (i.e., security controls) of information systems and networks. 
+S0036,Skill in evaluating the adequacy of security designs.,
+S0060,"Skill in writing code in a currently supported programming language (e.g., Java, C++). 
+S0085,Skill in conducting audits or reviews of technical systems.,
+S0097,Skill in applying security controls.,
+S0136,"Skill in network systems management principles, models, methods (e.g., end-to-end systems performance monitoring), and tools. 
+S0145,Skill in integrating and applying policies that meet system security objectives.,
+S0146,"Skill in creating policies that enable systems to meet performance objectives (e.g. traffic routing, SLA's, CPU specifications). 
+S0160,"Skill in the use of design modeling (e.g., unified modeling language). 
+S0367,"Skill to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+,,
+Abilities,,
+A0123,"Ability to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+A0162,"Ability to ensure information system security, acquisition personnel, legal counsel, and other appropriate advisors and stakeholders are participating in decision making from system concept definition/review and are involved in, or approve of, each milestone decision through the entire system life cycle for systems. 
+A0170,Ability to identify critical infrastructure systems with information communication technology that were designed without system security considerations.,

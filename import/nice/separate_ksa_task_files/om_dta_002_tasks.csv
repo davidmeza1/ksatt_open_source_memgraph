@@ -1,0 +1,27 @@
+Operate and Maintain (OM),"Data Analyst (OM-DTA-002): Examines data from multiple disparate sources with the goal of providing security and privacy insight. Designs and implements custom algorithms, workflow processes, and layouts for complex, enterprise-scale data sets used for modeling, data mining, and research purposes. Click to view the Master Task List
+Data Administration (DTA),,Click to return to the Table of Contents
+,,OPM 422
+Task ID,Task,
+T0007,Analyze and define data requirements and specifications.,
+T0008,Analyze and plan for anticipated changes in data capacity requirements.,
+T0068,"Develop data standards, policies, and procedures. 
+T0146,"Manage the compilation, cataloging, caching, distribution, and retrieval of data. 
+T0195,Provide a managed flow of relevant information (via web-based portals or other means) based on mission requirements.,
+T0210,Provide recommendations on new database technologies and architectures.,
+T0342,Analyze data sources to provide actionable recommendations.,
+T0347,Assess the validity of source data and subsequent findings.,
+T0349,Collect metrics and trending data.,
+T0351,Conduct hypothesis testing using statistical processes.,
+T0353,"Confer with systems analysts, engineers, programmers, and others to design application. 
+T0361,Develop and facilitate data-gathering methods.,
+T0366,Develop strategic insights from large data sets.,
+T0381,Present technical information to technical and nontechnical audiences.,
+T0382,Present data in creative formats.,
+T0383,Program custom algorithms.,
+T0385,Provide actionable recommendations to critical stakeholders based on data analysis and findings.,
+T0392,"Utilize technical documentation or resources to implement a new mathematical, data science, or computer science method. 
+T0402,Effectively allocate storage capacity in the design of data management systems.,
+T0403,"Read, interpret, write, modify, and execute simple scripts (e.g., Perl, VBScript) on Windows and UNIX systems (e.g., those that perform tasks such as: parsing large data files, automating manual tasks, and fetching/processing remote data). 
+T0404,"Utilize different programming languages to write code, open files, read files, and write output to different files. 
+T0405,"Utilize open source language such as R and apply quantitative techniques (e.g., descriptive and inferential statistics, sampling, experimental design, parametric and non-parametric tests of difference, ordinary least squares regression, general line). 
+T0460,Develop and implement data mining and data warehousing programs.,

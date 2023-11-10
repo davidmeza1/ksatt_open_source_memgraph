@@ -1,0 +1,30 @@
+Collect and Operate (CO),"Cyber Operator (CO-OPS-001): Conducts collection, processing, and/or geolocation of systems to exploit, locate, and/or track targets of interest. Performs network navigation, tactical forensic analysis, and, when directed, executes on-net operations. Click to view the Master Task List
+Cyber Operations (OPS),,Click to return to the Table of Contents
+,,OPM 321
+Task ID,Task,
+T0566,"Analyze internal operational architecture, tools, and procedures for ways to improve performance. 
+T0567,Analyze target operational architecture for ways to gain access.,
+T0598,Collaborate with development organizations to create and deploy the tools needed to achieve objectives.,
+T0609,Conduct access enabling of wireless computer and digital networks.,
+T0610,Conduct collection and processing of wireless computer and digital networks.,
+T0612,Conduct exploitation of wireless computer and digital networks.,
+T0616,Conduct network scouting and vulnerability analyses of systems within a network.,
+T0618,Conduct on-net activities to control and exfiltrate data from deployed technologies.,
+T0619,"Conduct on-net and off-net activities to control, and exfiltrate data from deployed, automated technologies. 
+T0620,Conduct open source data collection via various online tools.,
+T0623,Conduct survey of computer and digital networks.,
+T0643,"Deploy tools to a target and utilize them once deployed (e.g., backdoors, sniffers). 
+T0644,Detect exploits against targeted networks and hosts and react accordingly.,
+T0664,Develop new techniques for gaining and keeping access to target systems.,
+T0677,"Edit or execute simple scripts (e.g., Perl, VBScript) on Windows and UNIX systems. 
+T0696,"Exploit network devices, security devices, and/or terminals or environments using various methods or tools. 
+T0697,Facilitate access enabling by physical and/or wireless means.,
+T0724,Identify potential points of strength and vulnerability within a network.,
+T0740,Maintain situational awareness and functionality of organic operational infrastructure.,
+T0756,Operate and maintain automated systems for gaining and maintaining access to target systems.,
+T0768,Conduct cyber activities to degrade/remove information resident in computers and computer networks.,
+T0774,Process exfiltrated data for analysis and/or dissemination to customers.,
+T0796,Provide real-time actionable geolocation information.,
+T0804,Record information collection and/or environment preparation activities against targets during operations designed to achieve cyber effects.,
+T0828,Test and evaluate locally developed tools for operational use.,
+T0829,Test internal developed tools and techniques against target tools. ,

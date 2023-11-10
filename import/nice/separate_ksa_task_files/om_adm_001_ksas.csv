@@ -1,0 +1,61 @@
+Operate and Maintain (OM),"System Administrator (OM-ADM-001): Responsible for setting up and maintaining a system or specific components of a system (e.g. for example, installing, configuring, and updating hardware and software; establishing and managing user accounts; overseeing or conducting backup and recovery tasks; implementing operational and technical security controls; and adhering to organizational security policies and procedures). Click to view the Master KSA List
+Systems Administration (ADM),,Click to return to the Table of Contents
+,,OPM 451
+KSA ID,KSA,
+Knowledge,,
+K0001,"Knowledge of computer networking concepts and protocols, and network security methodologies.  
+K0002,"Knowledge of risk management processes (e.g., methods for assessing and mitigating risk). 
+K0003,"Knowledge of laws, regulations, policies, and ethics as they relate to cybersecurity and privacy.  
+K0004,Knowledge of cybersecurity and privacy principles.,
+K0005,Knowledge of cyber threats and vulnerabilities. ,
+K0006,Knowledge of specific operational impacts of cybersecurity lapses.,
+K0049,"Knowledge of information technology (IT) security principles and methods (e.g., firewalls, demilitarized zones, encryption).  
+K0050,Knowledge of local area and wide area networking principles and concepts including bandwidth management.,
+K0053,Knowledge of measures or indicators of system performance and availability.,
+K0064,Knowledge of performance tuning tools and techniques.,
+K0077,Knowledge of server and client operating systems.,
+K0088,Knowledge of systems administration concepts.,
+K0100,Knowledge of the enterprise information technology (IT) architecture.,
+K0103,Knowledge of the type and frequency of routine hardware maintenance.,
+K0104,Knowledge of Virtual Private Network (VPN) security.,
+K0117,"Knowledge of file system implementations (e.g., New Technology File System [NTFS], File Allocation Table [FAT], File Extension [EXT]). 
+K0130,Knowledge of virtualization technologies and virtual machine development and maintenance.,
+K0158,"Knowledge of organizational information technology (IT) user security policies (e.g., account creation, password rules, access control). 
+K0167,"Knowledge of system administration, network, and operating system hardening techniques. 
+K0179,"Knowledge of network security architecture concepts including topology, protocols, components, and principles (e.g., application of defense-in-depth). 
+K0260,Knowledge of Personally Identifiable Information (PII) data security standards.,
+K0261,Knowledge of Payment Card Industry (PCI) data security standards.,
+K0262,Knowledge of Personal Health Information (PHI) data security standards.,
+K0274,"Knowledge of transmission records (e.g., Bluetooth, Radio Frequency Identification (RFID), Infrared Networking (IR), Wireless Fidelity (Wi-Fi). paging, cellular, satellite dishes, Voice over Internet Protocol (VoIP)), and jamming techniques that enable transmission of undesirable information, or prevent installed systems from operating correctly.  
+K0280,"Knowledge of systems engineering theories, concepts, and methods. 
+K0289,Knowledge of system/server diagnostic tools and fault identification techniques.,
+K0318,Knowledge of operating system command-line tools.,
+K0332,"Knowledge of network protocols such as TCP/IP, Dynamic Host Configuration, Domain Name System (DNS), and directory services. 
+K0346,Knowledge of principles and methods for integrating system components.,
+,,
+Skills,,
+S0016,Skill in configuring and optimizing software.,
+S0033,Skill in diagnosing connectivity problems.,
+S0043,"Skill in maintaining directory services. (e.g., Microsoft Active Directory, LDAP, etc.). 
+S0073,"Skill in using virtual machines. (e.g., Microsoft Hyper-V, VMWare vSphere, Citrix XenDesktop/Server, Amazon Elastic Compute Cloud, etc.). 
+S0076,"Skill in configuring and utilizing software-based computer protection tools (e.g., software firewalls, antivirus software, anti-spyware). 
+S0111,Skill in interfacing with customers.,
+S0143,"Skill in conducting system/server planning, management, and maintenance. 
+S0144,Skill in correcting physical and technical problems that impact system/server performance.,
+S0151,"Skill in troubleshooting failed system components (i.e., servers) 
+S0153,"Skill in identifying and anticipating system/server performance, availability, capacity, or configuration problems. 
+S0154,"Skill in installing system and component upgrades. (i.e., servers, appliances, network devices). 
+S0155,Skill in monitoring and optimizing system/server performance.,
+S0157,"Skill in recovering failed systems/servers. (e.g., recovery software, failover clusters, replication, etc.). 
+S0158,"Skill in operating system administration. (e.g., account maintenance, data backups, maintain system performance, install and configure new hardware/software). 
+,,
+Abilities,,
+A0025,"Ability to accurately define incidents, problems, and events in the trouble ticketing system. 
+A0027,Ability to apply an organization's goals and objectives to develop and maintain architecture.,
+A0034,"Ability to develop, update, and/or maintain standard operating procedures (SOPs). 
+A0055,"Ability to operate common network tools (e.g., ping, traceroute, nslookup). 
+A0062,Ability to monitor measures or indicators of system performance and availability.,
+A0074,Ability to collaborate effectively with others.,
+A0088,"Ability to function effectively in a dynamic, fast-paced environment. 
+A0123,"Ability to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+A0124,Ability to establish and maintain automated security control assessments,

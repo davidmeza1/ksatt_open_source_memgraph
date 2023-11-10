@@ -1,0 +1,66 @@
+Securely Provision (SP),"Secure Software Assessor (SP-DEV-002): Analyzes the security of new or existing computer applications, software, or specialized utility programs and provides actionable results. Click to view the Master KSA List
+Software Development (DEV),,Click to return to the Table of Contents
+,,OPM 622
+KSA ID,KSA,
+Knowledge,,
+K0001,"Knowledge of computer networking concepts and protocols, and network security methodologies.  
+K0002,"Knowledge of risk management processes (e.g., methods for assessing and mitigating risk). 
+K0003,"Knowledge of laws, regulations, policies, and ethics as they relate to cybersecurity and privacy.  
+K0004,Knowledge of cybersecurity and privacy principles.,
+K0005,Knowledge of cyber threats and vulnerabilities. ,
+K0006,Knowledge of specific operational impacts of cybersecurity lapses.,
+K0014,Knowledge of complex data structures.,
+K0016,Knowledge of computer programming principles ,
+K0027,Knowledge of organization's enterprise information security architecture.,
+K0028,Knowledge of organization's evaluation and validation requirements.,
+K0039,Knowledge of cybersecurity and privacy principles and methods that apply to software development.,
+K0044,"Knowledge of cybersecurity and privacy principles and organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+K0050,Knowledge of local area and wide area networking principles and concepts including bandwidth management.,
+K0051,"Knowledge of low-level computer languages (e.g., assembly languages). 
+K0060,Knowledge of operating systems.,
+K0066,Knowledge of Privacy Impact Assessments.,
+K0068,Knowledge of programming language structures and logic.,
+K0070,"Knowledge of system and application security threats and vulnerabilities (e.g., buffer overflow, mobile code, cross-site scripting, Procedural Language/Structured Query Language [PL/SQL] and injections, race conditions, covert channel, replay, return-oriented attacks, malicious code). 
+K0073,"Knowledge of secure configuration management techniques. (e.g., Security Technical Implementation Guides (STIGs), cybersecurity best practices on cisecurity.org). 
+K0079,Knowledge of software debugging principles.,
+K0080,"Knowledge of software design tools, methods, and techniques. 
+K0081,"Knowledge of software development models (e.g., Waterfall Model, Spiral Model). 
+K0082,Knowledge of software engineering.,
+K0084,Knowledge of structured analysis principles and methods.,
+K0086,"Knowledge of system design tools, methods, and techniques, including automated systems analysis and design tools. 
+K0105,"Knowledge of web services (e.g., service-oriented architecture, Simple Object Access Protocol, and web service description language). 
+K0139,Knowledge of interpreted and compiled computer languages.,
+K0140,Knowledge of secure coding techniques.,
+K0152,"Knowledge of software related information technology (IT) security principles and methods (e.g., modularization, layering, abstraction, data hiding, simplicity/minimization). 
+K0153,Knowledge of software quality assurance process.,
+K0154,"Knowledge of supply chain risk management standards, processes, and practices. 
+K0170,Knowledge of critical infrastructure systems with information communication technology that were designed without system security considerations.,
+K0178,"Knowledge of secure software deployment methodologies, tools, and practices. 
+K0179,"Knowledge of network security architecture concepts including topology, protocols, components, and principles (e.g., application of defense-in-depth). 
+K0199,"Knowledge of security architecture concepts and enterprise architecture reference models (e.g., Zachman, Federal Enterprise Architecture [FEA]). 
+K0202,"Knowledge of the application firewall concepts and functions (e.g., Single point of authentication/audit/policy enforcement, message scanning for malicious content, data anonymization for PCI and PII compliance, data loss protection scanning, accelerated cryptographic operations, SSL security, REST/JSON processing). 
+K0260,Knowledge of Personally Identifiable Information (PII) data security standards.,
+K0261,Knowledge of Payment Card Industry (PCI) data security standards.,
+K0262,Knowledge of Personal Health Information (PHI) data security standards.,
+K0263,"Knowledge of information technology (IT) risk management policies, requirements, and procedures. 
+K0322,Knowledge of embedded systems.,
+K0342,"Knowledge of penetration testing principles, tools, and techniques. 
+K0343,Knowledge of root cause analysis techniques.,
+K0624,Knowledge of Application Security Risks (e.g. Open Web Application Security Project Top 10 list),
+,,
+Skills,,
+S0001,Skill in conducting vulnerability scans and recognizing vulnerabilities in security systems.,
+S0022,Skill in designing countermeasures to identified security risks.,
+S0031,Skill in developing and applying security system access controls.,
+S0034,"Skill in discerning the protection needs (i.e., security controls) of information systems and networks. 
+S0083,Skill in integrating black box security testing tools into quality assurance process of software releases.,
+S0135,"Skill in secure test plan design (e. g. unit, integration, system, acceptance). 
+S0138,"Skill in using Public-Key Infrastructure (PKI) encryption and digital signature capabilities into applications (e.g., S/MIME email, SSL traffic). 
+S0174,Skill in using code analysis tools.,
+S0175,Skill in performing root cause analysis.,
+S0367,"Skill to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+,,
+Abilities,,
+A0021,"Ability to use and understand complex mathematical concepts (e.g., discrete math). 
+A0123,"Ability to apply cybersecurity and privacy principles to organizational requirements (relevant to confidentiality, integrity, availability, authentication, non-repudiation). 
+A0170,Ability to identify critical infrastructure systems with information communication technology that were designed without system security considerations.,

@@ -1,0 +1,40 @@
+Securely Provision (SP),"Systems Developer (SP-SYS-002): Designs, develops, tests, and evaluates information systems throughout the systems development life cycle. Click to view the Master Task List
+Systems Development (SYS),,Click to return to the Table of Contents
+,,OPM 632
+Task ID,Task,
+T0012,"Analyze design constraints, analyze trade-offs and detailed system and security design, and consider life cycle support. 
+T0021,"Build, test, and modify product prototypes using working models or theoretical models. 
+T0053,Design and develop cybersecurity or cybersecurity-enabled products.,
+T0056,"Design or integrate appropriate data backup capabilities into overall system designs, and ensure that appropriate technical and procedural processes exist for secure system backups and protected storage of backup data. 
+T0061,Develop and direct system testing and validation procedures and documentation.,
+T0067,Develop architectures or system components consistent with technical specifications.,
+T0070,Develop Disaster Recovery and Continuity of Operations plans for systems under development and ensure testing prior to systems entering a production environment.,
+T0107,"Identify and direct the remediation of technical problems encountered during testing and implementation of new systems (e.g., identify and find work-arounds for communication protocols that are not interoperable). 
+T0109,Identify and prioritize essential system functions or sub-systems required to support essential capabilities or business functions for restoration or recovery after a system failure or during a system recovery event based on overall system requirements for continuity and availability.,
+T0119,"Identify, assess, and recommend cybersecurity or cybersecurity-enabled products for use within a system and ensure that recommended products are in compliance with organization's evaluation and validation requirements. 
+T0181,"Perform risk analysis (e.g., threat, vulnerability, and probability of occurrence) whenever an application or system undergoes a major change. 
+T0201,Provide guidelines for implementing developed systems to customers or installation teams.,
+T0205,"Provide input to the Risk Management Framework process activities and related documentation (e.g., system life-cycle support plans, concept of operations, operational procedures, and maintenance training materials). 
+T0228,"Store, retrieve, and manipulate data for analysis of system capabilities and requirements. 
+T0242,Utilize models and simulations to analyze or predict system performance under different operating conditions.,
+T0304,"Implement and integrate system development life cycle (SDLC) methodologies (e.g., IBM Rational Unified Process) into development environment. 
+T0326,Employ configuration management processes. ,
+T0350,"Conduct a market analysis to identify, assess, and recommend commercial, Government off-the-shelf, and open source products for use within a system and ensure recommended products are in compliance with organization's evaluation and validation requirements. 
+T0358,Design and develop system administration and management functionality for privileged access users.,
+T0359,"Design, implement, test, and evaluate secure interfaces between information systems, physical systems, and/or embedded technologies. 
+T0378,Incorporates risk-driven systems maintenance updates process to address system deficiencies (periodically and out of cycle).,
+T0406,Ensure that design and development activities are properly documented (providing a functional description of implementation) and updated as necessary.,
+T0447,"Design hardware, operating systems, and software applications to adequately address requirements. 
+T0449,Design to security requirements to ensure requirements are met for all systems and/or applications.,
+T0464,Develop detailed design documentation for component and interface specifications to support system design and development.,
+T0466,"Develop mitigation strategies to address cost, schedule, performance, and security risks. 
+T0480,"Identify components or elements, allocate comprehensive functional components to include security functions, and describe the relationships between the elements. 
+T0488,Implement designs for new or existing system(s).,
+T0518,Perform security reviews and identify security gaps in architecture.,
+T0528,"Provide input to implementation plans, standard operating procedures, maintenance documentation, and maintenance training materials 
+T0538,Provide support to test and evaluation activities.,
+T0541,Trace system requirements to design components and perform gap analysis.,
+T0544,"Verify stability, interoperability, portability, and/or scalability of system architecture. 
+T0558,Analyze user needs and requirements to plan and conduct system development.,
+T0559,"Develop designs to meet specific operational needs and environmental factors (e.g., access controls, automated applications, networked operations. 
+T0560,"Collaborate on cybersecurity designs to meet specific operational needs and environmental factors (e.g., access controls, automated applications, networked operations, high integrity and availability requirements, multilevel security/processing of multiple classification levels, and processing Sensitive Compartmented Information). 

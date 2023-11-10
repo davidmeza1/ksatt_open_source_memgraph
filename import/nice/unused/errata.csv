@@ -1,0 +1,7 @@
+Changes Since Final,Page # in NICE Framework (Aug 2017 Final)
+A150 updated incorrect reference to NIST SP 800-16 to NIST SP 800-160,96.0
+"A0162 had been used twice;  A0162 stays with Ability to ensure information system security, acquisition personnel, legal counsel, and other appropriate advisors and stakeholders are participating in decision making from system concept definition/review and are involved in, or approve of, each milestone decision through the entire system life cycle for systems. ",
+"The 2nd ability statement becomes A0177 Ability to ensure information system security, acquisition personnel, legal counsel, and other appropriate advisors and stakeholders are participating in decision making from system concept definition/review and are involved in, or approve of, each milestone decision through the entire system life cycle for systems. ",
+A0177 is included in OV-MGT-002,
+new A0178  Ability to leverage collection methodologies to meet organization objectives.,
+A0162 assigned to SP-SYS-002,

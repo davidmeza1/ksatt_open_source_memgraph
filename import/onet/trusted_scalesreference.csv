@@ -1,0 +1,30 @@
+maximum,minimum,scale_id,scale_name
+5,1,AO,Automation
+5,1,CF,Frequency
+5,1,CN,Amount of Contact
+3,1,CT,Context
+100,0,CTP,Context (Categories 1-3)
+5,1,CX,Context
+100,0,CXP,Context (Categories 1-5)
+7,1,EX,Extent
+5,1,FM,Amount of Freedom
+100,0,FT,Frequency of Task (Categories 1-7)
+3,1,HW,Hours Per Week
+6,0,IH,Occupational Interest High-Point
+5,1,IJ,Importance
+5,1,IM,Importance
+5,1,IP,Impact of Decisions
+5,1,LC,Level of Competition
+7,0,LV,Level
+7,1,OI,Occupational Interests
+100,0,OJ,On-The-Job Training (Categories 1-9)
+100,0,PT,On-Site Or In-Plant Training (Categories 1-9)
+5,1,PX,Proximity
+5,1,RE,Responsibility
+100,0,RL,Required Level Of Education (Categories 1-12)
+100,0,RT,Relevance of Task
+100,0,RW,Related Work Experience (Categories 1-11)
+5,1,SR,How Serious
+5,1,TI,% Time
+6,1,VH,Work Value High-Point
+3,1,WS,Work Schedule

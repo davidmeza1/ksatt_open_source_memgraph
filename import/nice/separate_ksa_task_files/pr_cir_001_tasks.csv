@@ -1,0 +1,21 @@
+Protect and Defend (PR),"Cyber Defense Incident Responder (PR-CIR-001): Investigates, analyzes, and responds to cyber incidents within the network environment or enclave. Click to view the Master Task List
+Incident Response (CIR),,Click to return to the Table of Contents
+,,OPM 531
+Task ID,Task,
+T0041,Coordinate and provide expert technical support to enterprise-wide cyber defense technicians to resolve cyber defense incidents.,
+T0047,Correlate incident data to identify specific vulnerabilities and make recommendations that enable expeditious remediation.,
+T0161,"Perform analysis of log files from a variety of sources (e.g., individual host logs, network traffic logs, firewall logs, and intrusion detection system [IDS] logs) to identify possible threats to network security. 
+T0163,"Perform cyber defense incident triage, to include determining scope, urgency, and potential impact, identifying the specific vulnerability, and making recommendations that enable expeditious remediation. 
+T0164,Perform cyber defense trend analysis and reporting.,
+T0170,"Perform initial, forensically sound collection of images and inspect to discern possible mitigation/remediation on enterprise systems. 
+T0175,"Perform real-time cyber defense incident handling (e.g., forensic collections, intrusion correlation and tracking, threat analysis, and direct system remediation) tasks to support deployable Incident Response Teams (IRTs). 
+T0214,Receive and analyze network alerts from various sources within the enterprise and determine possible causes of such alerts.,
+T0233,Track and document cyber defense incidents from initial detection through final resolution.,
+T0246,"Write and publish cyber defense techniques, guidance, and reports on incident findings to appropriate constituencies. 
+T0262,"Employ approved defense-in-depth principles and practices (e.g., defense-in-multiple places, layered defenses, security robustness). 
+T0278,"Collect intrusion artifacts (e.g., source code, malware, Trojans) and use discovered data to enable mitigation of potential cyber defense incidents within the enterprise. 
+T0279,Serve as technical expert and liaison to law enforcement personnel and explain incident details as required.,
+T0312,Coordinate with intelligence analysts to correlate threat assessment data. ,
+T0395,Write and publish after action reviews.,
+T0503,"Monitor external data sources (e.g., cyber defense vendor sites, Computer Emergency Response Teams, Security Focus) to maintain currency of cyber defense threat condition and determine which security issues may have an impact on the enterprise. 
+T0510,Coordinate incident response functions.,

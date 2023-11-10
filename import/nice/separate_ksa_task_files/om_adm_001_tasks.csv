@@ -1,0 +1,22 @@
+Operate and Maintain (OM),"System Administrator (OM-ADM-001): Responsible for setting up and maintaining a system or specific components of a system (e.g. for example, installing, configuring, and updating hardware and software; establishing and managing user accounts; overseeing or conducting backup and recovery tasks; implementing operational and technical security controls; and adhering to organizational security policies and procedures). Click to view the Master Task List
+Systems Administration (ADM),,Click to return to the Table of Contents
+,,OPM 451
+Task ID,Task,
+T0029,Conduct functional and connectivity testing to ensure continuing operability.,
+T0054,"Design group policies and access control lists to ensure compatibility with organizational standards, business rules, and needs. 
+T0063,Develop and document systems administration standard operating procedures.,
+T0136,Maintain baseline system security according to organizational policies.,
+T0144,"Manage accounts, network rights, and access to systems and equipment. 
+T0186,"Plan, execute, and verify data redundancy and system recovery procedures. 
+T0207,Provide ongoing optimization and problem-solving support.,
+T0418,"Install, update, and troubleshoot systems/servers. 
+T0431,"Check system hardware availability, functionality, integrity, and efficiency. 
+T0435,"Conduct periodic system maintenance including cleaning (both physically and electronically), disk checks, routine reboots, data dumps, and testing. 
+T0458,Comply with organization systems administration standard operating procedures.,
+T0461,Implement and enforce local network usage policies and procedures.,
+T0498,"Manage system/server resources including performance, capacity, availability, serviceability, and recoverability. 
+T0501,Monitor and maintain system/server configuration.,
+T0507,"Oversee installation, implementation, configuration, and support of system components. 
+T0514,Diagnose faulty system/server hardware.,
+T0515,Perform repairs on faulty system/server hardware.,
+T0531,Troubleshoot hardware/software interface and interoperability problems.,
