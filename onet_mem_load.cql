@@ -1,7 +1,8 @@
 // Upload ONET DATA
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADERWITH HEADER AS row RETURN row,
-MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row RETURN row,
+MERGE (scale:ONET_Scale {key: row.scale_id}) 
+ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
 
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row RETURN row
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
