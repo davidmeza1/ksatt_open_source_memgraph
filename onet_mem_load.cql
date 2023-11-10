@@ -658,3 +658,149 @@ MATCH (a:{})
 WITH split(a.uri, '/')[5] AS id_from_uri, a
 SET a.key = id_from_uri
 
+//print("Create occupations and groups")
+//# create occupation groups - don't relate them yet
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_iscogroups_en.csv' WITH HEADER AS row RETURN row 
+WITH row, split(row.concepturi, 'C')[1] AS code
+MERGE (a:ESCO_Occupation_Group {uri: row.concepturi})
+ON CREATE SET a.key = code, a.title = row.preferredlabel, a.alt_labels = row.altlabels, a.description = row.description; 
+
+//### WHAT THIS DOES ###
+//# find occupation groups where 
+//    # parent and child ids are not the same (e.g. 12, 121, 1213)
+//    # parent id is one less number in length than the child id (e.g. 12 is one number shorter than 121, same for 121 and 1213)
+//   # the parent id and a substring of the child id match
+//        # the substring of the child id starts at the first number in the id and is the length of the parent id
+//        # so in effect it's matching the substring of the child id that should be equal to the parent id 
+//        # e.g. 1213 child, 121 parent -> 1213 starts at first '1' and goes through '121' because that's the length of the parent 121
+//# create a relationship where the parent and child ids match up
+ 
+MATCH (a:ESCO_Occupation_Group), (b:ESCO_Occupation_Group)
+WHERE a.key <> b.key AND size(b.key)-1 = size(a.key) AND a.key = substring(b.key, 0, size(a.key))
+MERGE (a)<-[:SUB_ELEMENT_OF]-(b)
+ 
+
+//# create occupations and assign them to occupation groups
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_occupations_en.csv' WITH HEADER AS row RETURN row 
+MATCH (a:ESCO_Occupation_Group {key: row.iscogroup})
+MERGE (b:ESCO_Occupation {uri: row.concepturi})
+SET b.title = row.preferredlabel, b.alt_labels = row.altlabels, b.description = row.description, b.key = row.code
+MERGE (a)<-[:IN_GROUP]-(b); 
+
+ 
+MATCH (a:ESCO_Occupation), (b:ESCO_Occupation)
+WHERE a.key <> b.key AND (size(b.key)-2 = size(a.key) OR size(b.key)-3 = size(a.key)) AND a.key = substring(b.key, 0, size(a.key))
+MERGE (a)<-[:SUB_ELEMENT_OF]-(b)
+ 
+// Check relationships
+MATCH p=(a:ESCO_Occupation_Group)<--(b:ESCO_Occupation_Group) WHERE a.key<>b.key AND size(b.key)-1 = size(a.key) AND b.key CONTAINS a.key RETURN count(p) AS num 
+MATCH p=(:ESCO_Occupation_Group)<--(:ESCO_Occupation_Group)<--(:ESCO_Occupation_Group)<--(:ESCO_Occupation_Group)<--(:ESCO_Occupation)<--(:ESCO_Occupation)<--(:ESCO_Occupation)<--(:ESCO_Occupation) RETURN count(p) AS num
+
+
+MATCH (a:ESCO_Occupation) WHERE NOT (:ESCO_Occupation)<--(a) AND NOT (:ESCO_Occupation_Group)<--(a) RETURN count(a) AS num
+
+// UPLAOD NICE Data
+
+//print("Use table of contents to establish and relate NICE Categories, Areas and Workroles")
+
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+MERGE (a:NICE_Category {title: toLower(row.nice_category_title), acronym: row.nice_category_acronym, description: toLower(row.nice_category_description)});
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+MERGE (a:NICE_Area {title: toLower(row.nice_specialty_area_title), acronym: row.nice_specialty_area_acronym, description: toLower(row.nice_specialty_area_description)});
+ 
+
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+WITH row, split(row.work_role_id, '-') AS work_role_id_components
+MERGE (a:NICE_Workrole {key: row.work_role_id, key_1: work_role_id_components[0], key_2: work_role_id_components[1], key_3: work_role_id_components[2], title: toLower(row.work_role), description: toLower(row.work_role_description)})
+WITH row, a
+MATCH (b:NICE_Area {acronym: a.key_2})
+MATCH (c:NICE_Category {acronym: a.key_1})
+MERGE (a)-[:IN_AREA]->(b)
+MERGE (b)-[:IN_CATEGORY]->(c);
+ 
+
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+MATCH (a:NICE_Workrole {key: row.work_role_id})
+MERGE (b:OPM_Cybersecurity_Category {key: row.opm_code_fed_use})
+MERGE (a)-[:IN_CATEGORY]->(b);
+ 
+// Check
+MATCH a=(:NICE_Category)<-[:IN_CATEGORY]-(:NICE_Area)<-[:IN_AREA]-(:NICE_Workrole)-[:IN_CATEGORY]->(:OPM_Cybersecurity_Category) RETURN count(a) AS num;
+
+//print("Add NICE KSATTs and relate them to NICE Workroles")
+//# add NICE_Tasks and connect to NICE_Workrole nodes
+//# don't add KSA id because there are KSAs with the same title but different IDs, and the IDs don't matter (no hierarchy or context)
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_master_ksatt_list_mapped.csv' WITH HEADER AS row RETURN row 
+MATCH (a:NICE_Workrole {key: row.work_role_id})
+MERGE (b:NICE_KSAs {title: toLower(row.title)})
+ON CREATE SET b.key = row.id
+MERGE (b)-[:FOUND_IN]->(a);
+ 
+
+//# set NICE_KSAs labels to be more specific
+MATCH (a:NICE_KSAs) WHERE a.key CONTAINS 'K' SET a:NICE_Knowledge REMOVE a:NICE_KSAs, a.key 
+MATCH (a:NICE_KSAs) WHERE a.key CONTAINS 'S' SET a:NICE_Skills REMOVE a:NICE_KSAs, a.key 
+MATCH (a:NICE_KSAs) WHERE a.key CONTAINS 'A' SET a:NICE_Abilities REMOVE a:NICE_KSAs, a.key 
+MATCH (a:NICE_KSAs) WHERE a.key CONTAINS 'T' SET a:NICE_Tasks REMOVE a:NICE_KSAs, a.key 
+
+// check_queries = []
+MATCH a=(:NICE_Knowledge)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num 
+MATCH a=(:NICE_Skills)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num 
+MATCH a=(:NICE_Abilities)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num 
+MATCH a=(:NICE_Tasks)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num 
+
+// Crosswalk OPM and ONET
+
+//print("Add in the OPM Series to ONET Occupation Crosswalk")
+
+//# create OPM Series nodes
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row RETURN row 
+MERGE (:OPM_Series {key: row.opm_series_number, title: row.opm_series_title}); 
+
+//# create relationship between occupations and opm key's if they're in the right row
+ 
+LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row RETURN row 
+MATCH (a:ONET_Occupation), (b:OPM_Series {key: row.opm_series_number})
+WHERE a.key CONTAINS(row.`2010_soc_code`)
+MERGE (a)-[r:IN_OPM {census_code: row.`2010_eeo_tabulation_census_code`, census_title: toLower(row.`2010_eeo_tabulation_census_occupation_title`)}]->(b); 
+
+//Check
+MATCH a=(:ONET_Occupation)-[:IN_OPM]->(:OPM_Series) RETURN count(a) AS num 
+
+//print("Equate OPM Series to ONET Occupations for specific SOC Codes")
+
+MATCH (a:ONET_Occupation {key: '17-2071.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855")
+MERGE (a)-[:IN_OPM {census_code: '1410', census_title: toLower('ELECTRICAL & ELECTRONIC ENGINEERS')}]->(b); 
+
+MATCH (a:ONET_Occupation {key: '17-2072.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855")
+MERGE (a)-[:IN_OPM {census_code: '1410', census_title: toLower('ELECTRICAL & ELECTRONIC ENGINEERS')}]->(b); 
+
+MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854")
+MERGE (a)-[:IN_OPM {census_code: '1400', census_title: toLower('COMPUTER HARDWARE ENGINEERS')}]->(b); 
+
+//# TODO: was 15-1111 but no SOC codes match that
+//# run_query("""MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550")
+//# MERGE (a)-[:IN_OPM {census_code: '1005', census_title: toLower('COMPUTER & INFORMATION RESEARCH SCIENTISTS')}]->(b); 
+MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550")
+MERGE (a)-[:IN_OPM {census_code: '1005', census_title: toLower('COMPUTER & INFORMATION RESEARCH SCIENTISTS')}]->(b); 
+
+MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS('2210')
+MERGE (a)-[:IN_OPM {census_code: '1050', census_title: toLower('COMPUTER SUPPORT SPECIALISTS')}]->(b); 
+
+//print("Check the OPM to ONET Crosswalk queries")
+
+// check_queries = []
+MATCH p=(a:ONET_Occupation {key: '17-2071.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855") RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation {key: '17-2072.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855") RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854") RETURN count(p) AS num 
+//# TODO: same here
+# MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550") RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550") RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("2210") RETURN count(p) AS num 
