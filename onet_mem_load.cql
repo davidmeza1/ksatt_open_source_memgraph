@@ -1,15 +1,18 @@
 // Upload ONET DATA
-
+// done
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row 
 MERGE (scale:ONET_Scale {key: row.scale_id}) 
 ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
 
+// DONE
+// The CSV =has unexpexted coulumn starting at row 29759
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row 
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
 MERGE (a)<-[:ALT_TITLE_FOR]-(b);
 
+// Done
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row 
 MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
  
@@ -18,14 +21,16 @@ MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower
 //# Use occupations to identify various jobs - most useful when combined with information about skills. 
 //# Each **Occupation** node has a description which provides additional vocabulary and a code that is an easy way to match in the ONET occupation hierarchy. 
  
- 
+// Done
+// Bad cloumn on row 770 and 997
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_occupationdata.csv' WITH HEADER AS row  
 MERGE (a:ONET_Occupation {key: row.onet_soc_code, title: toLower(row.title)}) ON CREATE SET a.description = toLower(row.description); 
 
 //print("Add detailed ONET Occupation nodes - just add new unique occupations and relate to existing ones")
 //# Added ONET_Occupation nodes are detailed occupations of existing ONET_Occupation nodes -- these relate to each other through a DETAIL_OF relationship.
 //# Use: hierarchy of general and detailed occupations provides insight into how occupations might branch into focuses. Also, provides additional vocabulary.
- 
+
+// Done
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_detailed.csv' WITH HEADER AS row  
 WITH split(row.onet_soc_2019_code, '.') AS soc_id, row
 MATCH (a:ONET_Occupation {key: soc_id[0]+'.00'})
@@ -44,10 +49,20 @@ RETURN count(p) AS num;
 //print("Add additional ONET occupations that are alternate titles for existing occupation nodes")
 //# ONET_Occupation nodes connect through the ALT_TITLE_FOR relationship.
 //# Use: help find occupations when having trouble matching the exact title + provide additional vocabulary
- 
+
+// First Attempt -> Transaction was asked to abort because of transaction timeout.
+// Changed to IN_MEMORY ANALYTICAL - same error Transaction was asked to abort because of transaction timeout.
+// Splitting query
+// Same error - Transaction was asked to abort because of transaction timeout.
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
+//WITH a, b, row
+//MERGE (a)<-[:ALT_TITLE_FOR]-(b);
+
+// Splitting query
+LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row  
+MATCH (a:ONET_Occupation {key: row.onet_soc_code}), (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
 MERGE (a)<-[:ALT_TITLE_FOR]-(b);
         
