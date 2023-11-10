@@ -1,16 +1,16 @@
 // Upload ONET DATA
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row RETURN row,
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row 
 MERGE (scale:ONET_Scale {key: row.scale_id}) 
 ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
 
-LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row RETURN row
+LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row 
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
 MERGE (a)<-[:ALT_TITLE_FOR]-(b);
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row RETURN row
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row 
 MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
  
 
@@ -19,14 +19,14 @@ MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower
 //# Each **Occupation** node has a description which provides additional vocabulary and a code that is an easy way to match in the ONET occupation hierarchy. 
  
  
-LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_occupationdata.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_occupationdata.csv' WITH HEADER AS row  
 MERGE (a:ONET_Occupation {key: row.onet_soc_code, title: toLower(row.title)}) ON CREATE SET a.description = toLower(row.description); 
 
 //print("Add detailed ONET Occupation nodes - just add new unique occupations and relate to existing ones")
 //# Added ONET_Occupation nodes are detailed occupations of existing ONET_Occupation nodes -- these relate to each other through a DETAIL_OF relationship.
 //# Use: hierarchy of general and detailed occupations provides insight into how occupations might branch into focuses. Also, provides additional vocabulary.
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_detailed.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_detailed.csv' WITH HEADER AS row  
 WITH split(row.onet_soc_2019_code, '.') AS soc_id, row
 MATCH (a:ONET_Occupation {key: soc_id[0]+'.00'})
 MERGE (b:ONET_Occupation {key: soc_id[0]+'.'+soc_id[1]})
@@ -45,7 +45,7 @@ RETURN count(p) AS num;
 //# ONET_Occupation nodes connect through the ALT_TITLE_FOR relationship.
 //# Use: help find occupations when having trouble matching the exact title + provide additional vocabulary
  
-LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
@@ -56,19 +56,19 @@ MATCH n=(:ONET_Occupation)-[:ALT_TITLE_FOR]-(:ONET_Occupation) RETURN count(n) A
 
 // print("Create occupation groups")
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 WHERE row.major_group<>'' MERGE (a:ONET_Major_Group {key: row.major_group});
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 WHERE row.minor_group<>'' MERGE (a:ONET_Minor_Group {key: row.minor_group}); 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 WHERE row.broad_occupation<>'' MERGE (a:ONET_Broad_Occupation_Group {key: row.broad_occupation}); 
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 WHERE row.detailed_occupation<>'' MERGE (a:ONET_Detailed_Occupation_Group {key: row.detailed_occupation}); 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 MATCH (a:ONET_Major_Group {key: row.major_group})
 MATCH (b:ONET_Minor_Group {key: row.minor_group})
 MATCH (c:ONET_Broad_Occupation_Group {key: row.broad_occupation})
@@ -78,7 +78,7 @@ MERGE (b)<-[:IN_GROUP]-(c)
 MERGE (c)<-[:IN_GROUP]-(d)
 
 // Split the above query into 2. The last Merge was causing a memory issue 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 MATCH (d:ONET_Detailed_Occupation_Group {key: row.detailed_occupation})
 MATCH (e:ONET_Occupation {title: toLower(row.soc_or_onet_soc_2019_title)})
 MERGE (d)<-[:IN_GROUP]-(e)
@@ -94,7 +94,7 @@ RETURN count(p) AS num;
 //# load the elements with key, title and description properties 
  
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_contentmodelreference.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_contentmodelreference.csv' WITH HEADER AS row  
 MERGE (a:ONET_Element {key: row.element_id})
 ON CREATE SET a.title = toLower(row.element_name), a.description = toLower(row.description);
         
@@ -175,7 +175,7 @@ MATCH p=(:ONET_Element)<-[:SUB_ELEMENT_OF]-(:ONET_Worker_Characteristics)<-[:SUB
 
 //# technology skills
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row  
 MERGE (a:ONET_Technology_Skills {key: row.commodity_code})
 ON MATCH SET a:ONET_Commodity
 ON CREATE SET a:ONET_Commodity, a.title = toLower(row.commodity_title), a.trending_technology = row.hot_technology
@@ -185,14 +185,14 @@ MERGE (a)<-[:EXAMPLE_OF]-(b);
  
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation_Specific_Information {key:'5.F'}), (b:ONET_Technology_Skills {key: row.commodity_code})
 MERGE (a)<-[:SUB_ELEMENT_OF]-(b);
 
 
 //# tools
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row  
 MERGE (a:ONET_Tools {key: row.commodity_code})
 ON MATCH SET a:ONET_Commodity
 ON CREATE SET a:ONET_Commodity, a.title = toLower(row.commodity_title)
@@ -201,7 +201,7 @@ MERGE (a)<-[:EXAMPLE_OF]-(b);
  
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation_Specific_Information {key:'5.G'}), (b:ONET_Tools {key: row.commodity_code})
 MERGE (a)<-[:SUB_ELEMENT_OF]-(b);
 
@@ -209,7 +209,7 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(b);
 
 // Hierarchy created from Segment <- Family <- Class <- Commodity
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_unspscreference.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_unspscreference.csv' WITH HEADER AS row  
 MERGE (a:ONET_Segment {key: row.segment_code})
 SET a.title = toLower(row.segment_title)
 MERGE (b:ONET_Family {key: row.family_code})
@@ -243,7 +243,7 @@ MATCH p=(a:ONET_Occupation_Specific_Information {key:'5.G'})<-[:SUB_ELEMENT_OF]-
 
 //# Generalized_Work_Activities were already created from contentmodelreference.csv, so we need to match those
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_dwareference.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_dwareference.csv' WITH HEADER AS row  
 
 MATCH (a:ONET_Generalized_Work_Activities {key: row.element_id})
 MATCH (bb:ONET_Occupational_Requirements {title:'intermediate work activities'})
@@ -267,7 +267,7 @@ MATCH p=(:ONET_Generalized_Work_Activities)<-[:DETAIL_OF]-(:ONET_Intermediate_Wo
 //# Use: different tasks performed as part of occupations or work activities imply skills, which we are interested in
 //# These were not included in contentmodelreference.csv, only the parent Tasks **ONET_Element** node was, so this loads detailed **ONET_Tasks** nodes
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_taskstatements.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_taskstatements.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation_Specific_Information {title: 'tasks'})
 MERGE (b:ONET_Tasks {title: toLower(row.task)})
 ON CREATE SET b.key = row.task_id, b.description = toLower(row.task), b.type = toLower(row.task_type)
@@ -280,7 +280,7 @@ MATCH p=(:ONET_Occupation_Specific_Information {title: 'tasks'})<-[:SUB_ELEMENT_
 //# Because **ONET_Tasks** are required in order to complete work activities, we want to associate **ONET_Detailed_Work_Activities** with requisite **ONET_Tasks**.
 //# We don't create any nodes, we just MATCH existing **ONET_Tasks** and **ONET_Detailed_Work_Activities** nodes.
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_taskstodwas.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_taskstodwas.csv' WITH HEADER AS row  
 MATCH (a:ONET_Detailed_Work_Activities {key: row.dwa_id})
 MATCH (b:ONET_Tasks {title: toLower(row.task)})
 WITH a, b, row
@@ -291,13 +291,13 @@ MATCH p=(:ONET_Detailed_Work_Activities)<-[:TASK_FOR_DWA]-(:ONET_Tasks) RETURN c
 //print("Enrich the existing education and experiences and training data by adding categories")
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperiencecategories.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperiencecategories.csv' WITH HEADER AS row  
 MATCH (a:ONET_Education {key: row.element_id})
 MERGE (b:ONET_Education_Category {key: row.scale_id+'.'+row.category, title: toLower(row.category_description)})
 MERGE (a)<-[:CATEGORY_OF]-(b); 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperiencecategories.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperiencecategories.csv' WITH HEADER AS row  
 MATCH (a:ONET_Experience_And_Training {key: row.element_id})
 MERGE (b:ONET_Experience_And_Training_Category {key: row.scale_id+'.'+row.category, title: toLower(row.category_description)})
 MERGE (a)<-[:CATEGORY_OF]-(b); 
@@ -314,7 +314,7 @@ MATCH p=(:ONET_Experience_And_Training)<-[:CATEGORY_OF]-(:ONET_Experience_And_Tr
 //# 2.  Now they all will have relationships with **ONET_Occupation** nodes - these are _FOUND_IN_ relationships at the core, but are named differently based on the type of scale that the relationship indicates (e.g. _LV_FOUND_IN_ for level, _IM_FOUND_IN_ for importance, etc.). These will be cleaned up later.
 
 // ######################## NEED TO LOOK INTO APOC.MERGE ############################### 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_abilities.csv'V WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_abilities.csv'V WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Abilities {key: row.element_id})
 WITH a, b, row
@@ -322,7 +322,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:10000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_interests.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_interests.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Interests_And_Work_Values {key: row.element_id})
 WITH a, b, row
@@ -331,7 +331,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workstyles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workstyles.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Work_Styles {key: row.element_id})
 WITH a, b, row
@@ -339,7 +339,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:1000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_skills.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_skills.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Basic_Skills {key: row.element_id})
 WITH a, b, row
@@ -347,7 +347,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:10000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_skills.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_skills.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Cross_Functional_Skills {key: row.element_id})
 WITH a, b, row
@@ -355,14 +355,14 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:10000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_knowledge.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_knowledge.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Knowledge {key: row.element_id})
 WITH a, b, row
 CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value: toFloat(row.data_value)}, {}, a, {}) YIELD rel RETURN rel
  {batch_size:10000}) YIELD * RETURN *; 
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperience.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperience.csv' WITH HEADER AS row  
 
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Education_Category {key: row.scale_id+'.'+row.category})
@@ -371,7 +371,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:10000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperience.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperience.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Experience_And_Training_Category {key: row.scale_id+'.'+row.category})
 WITH a, b, row
@@ -380,7 +380,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
 
 //# here the GWAs are being matched but really we associated the DWA with the Occupations
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workactivities.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workactivities.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Generalized_Work_Activities {key: row.element_id})
 WITH a, b, row
@@ -388,7 +388,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
  {batch_size:10000}) YIELD * RETURN *; 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workcontext.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_workcontext.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Work_Context {key: row.element_id})
 WITH a, b, row
@@ -405,7 +405,7 @@ CALL apoc.merge.relationship(b, toString(row.scale_id)+'_FOUND_IN', {data_value:
 
 //# TODO: no weights 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_technologyskills.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Technology_Skills {key: row.commodity_code})
 WITH a, b, row
@@ -414,7 +414,7 @@ MERGE (b)-[:FOUND_IN]->(a)
 
 //# TODO: no weights 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
 MATCH (b:ONET_Tools {key: row.commodity_code})
 WITH a, b, row
@@ -488,7 +488,7 @@ MATCH (a)-[r]-(b) WHERE type(r) CONTAINS 'FOUND_IN' RETURN DISTINCT type(r) AS r
 
 //# add skill hierarchy 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row  
 WHERE row.level_3_code <> '' AND row.level_0_preferred_term = 'skills'
 MERGE (a:ESCO_Skills {uri: row.level_1_uri})
 ON CREATE SET a.title = row.level_1_preferred_term
@@ -502,7 +502,7 @@ MERGE (b)<-[:SUB_ELEMENT_OF]-(c);
 
 //# add knowledge hierarchy
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row  
 WHERE row.level_3_preferred_term <> '' AND row.level_0_preferred_term = 'knowledge'
 MERGE (a:ESCO_Knowledge {uri: row.level_1_uri})
 ON CREATE SET a.title = row.level_1_preferred_term
@@ -519,14 +519,14 @@ SET c.description = row.description;
 
 //# add language hierarchy
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row  
 WHERE row.level_1_code <> '' AND row.level_0_preferred_term = 'language skills and knowledge'
 MERGE (a:ESCO_Language {uri: row.level_1_uri})
 ON CREATE SET a.title = row.level_1_preferred_term, a.description = row.description; 
 
 //# add attitudes and values hierarchy 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skillshierarchy_en.csv' WITH HEADER AS row  
 WHERE row.level_3_code <> '' AND row.level_0_preferred_term = 'attitudes and values'
 MERGE (a:ESCO_Attitudes_Values {uri: row.level_1_uri})
 ON CREATE SET a.title = row.level_1_preferred_term
@@ -552,7 +552,7 @@ MATCH (a:ESCO_Attitudes_Values) RETURN count(a)
 //print("Add additional skills to the hierarchy")
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_transversalskillscollection_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_transversalskillscollection_en.csv' WITH HEADER AS row  
 WHERE row.skillType = 'skill/competence' 
 WITH split(row.broaderconceptpt, ' | ') AS broaderconcepttitles, split(row.broaderconcepturi, ' | ') AS broaderconcepturis, row
 MERGE (a:ESCO_Skills {uri: broaderconcepturis[0]})
@@ -566,7 +566,7 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(c)
 MERGE (b)<-[:SUB_ELEMENT_OF]-(c); 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_transversalskillscollection_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_transversalskillscollection_en.csv' WITH HEADER AS row  
 WHERE row.skillType = 'knowledge' 
 WITH split(row.broaderconceptpt, ' | ') AS broaderconcepttitles, split(row.broaderconcepturi, ' | ') AS broaderconcepturis, row
 MERGE (a:ESCO_Knowledge {uri: broaderconcepturis[0]})
@@ -592,7 +592,7 @@ MERGE (b)<-[:SUB_ELEMENT_OF]-(c);
 //print("Add languages to the hierarchy")
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_languageskillscollection_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_languageskillscollection_en.csv' WITH HEADER AS row  
 WHERE row.broaderconceptpt CONTAINS 'languages'
 MATCH (a:ESCO_Language {title: 'languages'})
 MERGE (b:ESCO_Language {uri: row.concepturi})
@@ -601,7 +601,7 @@ ON CREATE SET b.title = row.preferredlabel, b.alt_labels = row.altlabels, b.desc
 MERGE (a)<-[:SUB_ELEMENT_OF]-(c); 
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_languageskillscollection_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_languageskillscollection_en.csv' WITH HEADER AS row  
 WHERE row.broaderconceptpt <> 'languages | language' AND row.broaderconceptpt <> 'language | languages'
 MATCH (a:ESCO_Language {title: row.broaderconceptpt})
 MERGE (b:ESCO_Language {uri: row.concepturi})
@@ -627,14 +627,14 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(b)
 
 //# add other skills
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skills_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skills_en.csv' WITH HEADER AS row  
 WHERE row.skilltype = 'skill/competence'
 MERGE (a:ESCO_Skills {uri: row.concepturi})
 ON CREATE SET a.title = row.preferredlabel, a.alt_title = row.altlabels, a.description = row.description; 
 
 //# add other knowledge
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skills_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_skills_en.csv' WITH HEADER AS row  
 WHERE row.skilltype = 'knowledge'
 MERGE (a:ESCO_Knowledge {uri: row.concepturi})
 ON CREATE SET a.title = row.preferredlabel, a.alt_title = row.altlabels, a.description = row.description; 
@@ -662,7 +662,7 @@ SET a.key = id_from_uri
 //print("Create occupations and groups")
 //# create occupation groups - don't relate them yet
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_iscogroups_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_iscogroups_en.csv' WITH HEADER AS row  
 WITH row, split(row.concepturi, 'C')[1] AS code
 MERGE (a:ESCO_Occupation_Group {uri: row.concepturi})
 ON CREATE SET a.key = code, a.title = row.preferredlabel, a.alt_labels = row.altlabels, a.description = row.description; 
@@ -684,7 +684,7 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(b)
 
 //# create occupations and assign them to occupation groups
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_occupations_en.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_occupations_en.csv' WITH HEADER AS row  
 MATCH (a:ESCO_Occupation_Group {key: row.iscogroup})
 MERGE (b:ESCO_Occupation {uri: row.concepturi})
 SET b.title = row.preferredlabel, b.alt_labels = row.altlabels, b.description = row.description, b.key = row.code
@@ -707,14 +707,14 @@ MATCH (a:ESCO_Occupation) WHERE NOT (:ESCO_Occupation)<--(a) AND NOT (:ESCO_Occu
 //print("Use table of contents to establish and relate NICE Categories, Areas and Workroles")
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row  
 MERGE (a:NICE_Category {title: toLower(row.nice_category_title), acronym: row.nice_category_acronym, description: toLower(row.nice_category_description)});
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row  
 MERGE (a:NICE_Area {title: toLower(row.nice_specialty_area_title), acronym: row.nice_specialty_area_acronym, description: toLower(row.nice_specialty_area_description)});
  
 
-LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row  
 WITH row, split(row.work_role_id, '-') AS work_role_id_components
 MERGE (a:NICE_Workrole {key: row.work_role_id, key_1: work_role_id_components[0], key_2: work_role_id_components[1], key_3: work_role_id_components[2], title: toLower(row.work_role), description: toLower(row.work_role_description)})
 WITH row, a
@@ -725,7 +725,7 @@ MERGE (b)-[:IN_CATEGORY]->(c);
  
 
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row  
 MATCH (a:NICE_Workrole {key: row.work_role_id})
 MERGE (b:OPM_Cybersecurity_Category {key: row.opm_code_fed_use})
 MERGE (a)-[:IN_CATEGORY]->(b);
@@ -737,7 +737,7 @@ MATCH a=(:NICE_Category)<-[:IN_CATEGORY]-(:NICE_Area)<-[:IN_AREA]-(:NICE_Workrol
 //# add NICE_Tasks and connect to NICE_Workrole nodes
 //# don't add KSA id because there are KSAs with the same title but different IDs, and the IDs don't matter (no hierarchy or context)
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_master_ksatt_list_mapped.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_master_ksatt_list_mapped.csv' WITH HEADER AS row  
 MATCH (a:NICE_Workrole {key: row.work_role_id})
 MERGE (b:NICE_KSAs {title: toLower(row.title)})
 ON CREATE SET b.key = row.id
@@ -762,12 +762,12 @@ MATCH a=(:NICE_Tasks)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num
 
 //# create OPM Series nodes
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row  
 MERGE (:OPM_Series {key: row.opm_series_number, title: row.opm_series_title}); 
 
 //# create relationship between occupations and opm key's if they're in the right row
  
-LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row RETURN row 
+LOAD CSV FROM  '/usr/lib/memgraph/import/trusted_opm_onet_crosswalk.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation), (b:OPM_Series {key: row.opm_series_number})
 WHERE a.key CONTAINS(row.`2010_soc_code`)
 MERGE (a)-[r:IN_OPM {census_code: row.`2010_eeo_tabulation_census_code`, census_title: toLower(row.`2010_eeo_tabulation_census_occupation_title`)}]->(b); 
