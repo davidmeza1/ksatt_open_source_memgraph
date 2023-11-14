@@ -12,25 +12,25 @@ MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
 MERGE (a)<-[:ALT_TITLE_FOR]-(b);
 
-// Done
+// Done 96ms
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_scalesreference.csv' WITH HEADER AS row 
 MERGE (scale:ONET_Scale {key: row.scale_id}) ON CREATE SET scale.title = toLower(row.scale_name), scale.min = toInteger(row.minimum), scale.max = toInteger(row.maximum);
  
 
-//print("Add ONET Occupation nodes")
+//print("Add ONET Occupation nodes
 //# Use occupations to identify various jobs - most useful when combined with information about skills. 
 //# Each **Occupation** node has a description which provides additional vocabulary and a code that is an easy way to match in the ONET occupation hierarchy. 
  
-// Done
+// Done 3.63s
 // Bad cloumn on row 770 and 997
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_occupationdata.csv' WITH HEADER AS row  
 MERGE (a:ONET_Occupation {key: row.onet_soc_code, title: toLower(row.title)}) ON CREATE SET a.description = toLower(row.description); 
 
-//print("Add detailed ONET Occupation nodes - just add new unique occupations and relate to existing ones")
+//print("Add detailed ONET Occupation nodes - just add new unique occupations and relate to existing ones
 //# Added ONET_Occupation nodes are detailed occupations of existing ONET_Occupation nodes -- these relate to each other through a DETAIL_OF relationship.
 //# Use: hierarchy of general and detailed occupations provides insight into how occupations might branch into focuses. Also, provides additional vocabulary.
 
-// Done
+// Done 387ms
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_detailed.csv' WITH HEADER AS row  
 WITH split(row.onet_soc_2019_code, '.') AS soc_id, row
 MATCH (a:ONET_Occupation {key: soc_id[0]+'.00'})
@@ -40,13 +40,13 @@ WITH a, b
 WHERE a.key <> b.key
 MERGE (a)<-[:DETAIL_OF]-(b);
         
-//# check
+//# check done 96ms
 MATCH p=(a:ONET_Occupation)<-[:DETAIL_OF]-(b:ONET_Occupation)
 WITH split(a.key, '.') AS parent_id, split(b.key, '.') AS child_id, p
 WHERE parent_id[1] = '00' AND child_id[1] <> '00' AND parent_id[0] = child_id[0]
 RETURN count(p) AS num;
 
-//print("Add additional ONET occupations that are alternate titles for existing occupation nodes")
+//print("Add additional ONET occupations that are alternate titles for existing occupation nodes
 //# ONET_Occupation nodes connect through the ALT_TITLE_FOR relationship.
 //# Use: help find occupations when having trouble matching the exact title + provide additional vocabulary
 
@@ -54,22 +54,43 @@ RETURN count(p) AS num;
 // Changed to IN_MEMORY ANALYTICAL - same error Transaction was asked to abort because of transaction timeout.
 // Splitting query
 // Same error - Transaction was asked to abort because of transaction timeout.
+// Chaged query.timeout to 0
+// Query worked, took 35.11 minutes
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code})
-MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})
+MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)});
 //WITH a, b, row
 //MERGE (a)<-[:ALT_TITLE_FOR]-(b);
 
 // Splitting query
+// Query worked, took 1 hour 6 minutues
 LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row  
 MATCH (a:ONET_Occupation {key: row.onet_soc_code}), (b:ONET_Occupation {title: toLower(row.alternate_title)})
 WITH a, b, row
 MERGE (a)<-[:ALT_TITLE_FOR]-(b);
+
+// ###########  Trying Periodic again
+CALL periodic.iterate(
+"LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row RETURN row",  
+"MATCH (a:ONET_Occupation {key: row.onet_soc_code}) MERGE (b:ONET_Occupation {title: toLower(row.alternate_title)})",
+{batch_size: 1000})
+YIELD * RETURN *;
+
+CALL periodic.iterate(
+"LOAD CSV FROM '/usr/lib/memgraph/import/onet/trusted_alternatetitles.csv' WITH HEADER AS row RETURN row",  
+"MATCH (a:ONET_Occupation {key: row.onet_soc_code}), (b:ONET_Occupation {title: toLower(row.alternate_title)}) WITH a, b, row MERGE (a)<-[:ALT_TITLE_FOR]-(b);",
+{batch_size: 1000})
+YIELD * RETURN *;
+
+// ###################################
+
+
+
         
 //# check
 MATCH n=(:ONET_Occupation)-[:ALT_TITLE_FOR]-(:ONET_Occupation) RETURN count(n) AS num;
 
-// print("Create occupation groups")
+// print("Create occupation groups
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_soc_structure.csv' WITH HEADER AS row  
 WHERE row.major_group<>'' MERGE (a:ONET_Major_Group {key: row.major_group});
@@ -101,7 +122,7 @@ MERGE (d)<-[:IN_GROUP]-(e)
 MATCH p=(:ONET_Major_Group)<-[:IN_GROUP]-(:ONET_Minor_Group)<-[:IN_GROUP]-(:ONET_Broad_Occupation_Group)<-[:IN_GROUP]-(:ONET_Detailed_Occupation_Group)<-[:IN_GROUP]-(:ONET_Occupation) 
 RETURN count(p) AS num;
 
-//print( LOAD ONET elements (aka KSATTs) and establish a hierarchy based on keys.")
+//print( LOAD ONET elements (aka KSATTs) and establish a hierarchy based on keys.
 //# Use: hierarchy of KSATTs
 //# Hierarchy established through SUB_ELEMENT_OF relationship to other **ONET_Element** nodes - check out with:
 //# MATCH p=(:ONET_Element {key: '0'})<-[:SUB_ELEMENT_OF]-(b)<-[:SUB_ELEMENT_OF]-(c)<-[:SUB_ELEMENT_OF]-(d) return p limit 50
@@ -173,15 +194,15 @@ while num_left > 0:
 
 MATCH p=(:ONET_Element {key: '0'})<-[:SUB_ELEMENT_OF]-(:ONET_Element {key: '1'}) RETURN count(p) AS num ['num'][0]
 if results != 1:
-    interrupt("ONET_Element relationships  "there should be relationships between element 0 and 1..6")
+    interrupt("ONET_Element relationships  "there should be relationships between element 0 and 1..6
 
 MATCH p=(a {key: '1.A.1'})<-[:SUB_ELEMENT_OF]-(b {key: '1.A.1.a'}) RETURN count(p) AS num ['num'][0]
 if results != 1:
-    interrupt("ONET_Element relationships  "there should be relationships between elements with 'sub-codes'")
+    interrupt("ONET_Element relationships  "there should be relationships between elements with 'sub-codes'
 
 MATCH p=(:ONET_Element)<-[:SUB_ELEMENT_OF]-(:ONET_Worker_Characteristics)<-[:SUB_ELEMENT_OF]-(:ONET_Abilities)<-[:SUB_ELEMENT_OF]-(:ONET_Abilities) RETURN count(p) AS num;
 
-// print("Delineate which Commodity nodes are Technology Skills and Tools")
+// print("Delineate which Commodity nodes are Technology Skills and Tools
 //# Use: specify the technologies and tools in the database for reference of specific skill types.
 //# Some **ONET_Commodity** nodes are in fact technologies or tools. So after the **ONET_Commodity** nodes are created, we additionally label those **ONET_Commodity** nodes as **ONET_Technology_Skills** and **ONET_Tools** nodes — _so these have multiple labels_ - depending on which are in technologyskills.csv and toolsused.csv. 
 //# **ONET_Technology_Skills** nodes have a trending_technology property to indicate if ONET determines it is a rising skill or not
@@ -220,7 +241,7 @@ LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_toolsused.csv' WITH HEADER
 MATCH (a:ONET_Occupation_Specific_Information {key:'5.G'}), (b:ONET_Tools {key: row.commodity_code})
 MERGE (a)<-[:SUB_ELEMENT_OF]-(b);
 
-//print("Create a hierarchical pattern of Segment, Family, Class and Commodity nodes")
+//print("Create a hierarchical pattern of Segment, Family, Class and Commodity nodes
 
 // Hierarchy created from Segment <- Family <- Class <- Commodity
  
@@ -237,7 +258,7 @@ MERGE (b)<-[:SUB_SEGMENT_OF]-(c)
 MERGE (c)<-[:SUB_SEGMENT_OF]-(d)
  
 
-//print("Check that the Commodity hierachy and Technology Skills/Tools queries completed as expected")
+//print("Check that the Commodity hierachy and Technology Skills/Tools queries completed as expected
 //check_queries = []
 MATCH p=(:ONET_Technology_Skills)--(:ONET_Technology_Skills_Example) RETURN count(p) AS num 
 MATCH p=(:ONET_Tools)--(:ONET_Tools_Example) RETURN count(p) AS num 
@@ -249,7 +270,7 @@ MATCH p=(:ONET_Segment)<-[:SUB_SEGMENT_OF]-(:ONET_Family)<-[:SUB_SEGMENT_OF]-(:O
 MATCH p=(a:ONET_Occupation_Specific_Information {key:'5.F'})<-[:SUB_ELEMENT_OF]-(b:ONET_Technology_Skills) RETURN count(p) AS num 
 MATCH p=(a:ONET_Occupation_Specific_Information {key:'5.G'})<-[:SUB_ELEMENT_OF]-(b:ONET_Tools) RETURN count(p) AS num 
 
-//print("Create a hierarchy of work activities (generalized, intermediate, detailed)")
+//print("Create a hierarchy of work activities (generalized, intermediate, detailed)
 //# Use: be able to look at work activities at different levels of granularity
 //# **ONET_Generalized_Work_Activities** were already created from the contentmodelreference.csv (all **ONET_Element** nodes that started as 4.A were re-labeled as **ONET_Generalized_Work_Activities**)
 //# Intermediate & Detailed were not detailed in contentmodelreference.csv but are in this document, so we're creating these
@@ -278,7 +299,7 @@ MATCH p=(:ONET_Occupational_Requirements)<-[:SUB_ELEMENT_OF]-(:ONET_Intermediate
 MATCH p=(:ONET_Occupational_Requirements)<-[:SUB_ELEMENT_OF]-(:ONET_Detailed_Work_Activities) RETURN count(p) AS num 
 MATCH p=(:ONET_Generalized_Work_Activities)<-[:DETAIL_OF]-(:ONET_Intermediate_Work_Activities)<-[:DETAIL_OF]-(:ONET_Detailed_Work_Activities) RETURN count(p) AS num 
 
-//print("Create task nodes")
+//print("Create task nodes
 //# Use: different tasks performed as part of occupations or work activities imply skills, which we are interested in
 //# These were not included in contentmodelreference.csv, only the parent Tasks **ONET_Element** node was, so this loads detailed **ONET_Tasks** nodes
  
@@ -291,7 +312,7 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(b);
 
 MATCH p=(:ONET_Occupation_Specific_Information {title: 'tasks'})<-[:SUB_ELEMENT_OF]-(:ONET_Tasks) RETURN count(p) AS num; 
 
-//print("Match tasks to detailed work activities")
+//print("Match tasks to detailed work activities
 //# Because **ONET_Tasks** are required in order to complete work activities, we want to associate **ONET_Detailed_Work_Activities** with requisite **ONET_Tasks**.
 //# We don't create any nodes, we just MATCH existing **ONET_Tasks** and **ONET_Detailed_Work_Activities** nodes.
  
@@ -303,7 +324,7 @@ MERGE (a)<-[:TASK_FOR_DWA]-(b);
 
 MATCH p=(:ONET_Detailed_Work_Activities)<-[:TASK_FOR_DWA]-(:ONET_Tasks) RETURN count(p) AS num;
 
-//print("Enrich the existing education and experiences and training data by adding categories")
+//print("Enrich the existing education and experiences and training data by adding categories
 
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/onet/trusted_educationtrainingandexperiencecategories.csv' WITH HEADER AS row  
@@ -324,7 +345,7 @@ MATCH p=(:ONET_Experience_And_Training)<-[:CATEGORY_OF]-(:ONET_Experience_And_Tr
 MATCH p=(:ONET_Education)<-[:CATEGORY_OF]-(:ONET_Education_Category)-[:CATEGORY_OF]->(:ONET_Education) RETURN count(p) AS num 
 MATCH p=(:ONET_Experience_And_Training)<-[:CATEGORY_OF]-(:ONET_Experience_And_Training_Category)-[:CATEGORY_OF]->(:ONET_Experience_And_Training) RETURN count(p) AS num 
 
-//print("Create relationships between occupations and the various KSATTs derived from ONET")
+//print("Create relationships between occupations and the various KSATTs derived from ONET
 //# 1.  All KSATT nodes were originally **ONET_Element** nodes, they were just re-labeled. So they all have an id and title, and _SUB_ELEMENT_OF_ relationship. These are not being created, only matched.
 //# 2.  Now they all will have relationships with **ONET_Occupation** nodes - these are _FOUND_IN_ relationships at the core, but are named differently based on the type of scale that the relationship indicates (e.g. _LV_FOUND_IN_ for level, _IM_FOUND_IN_ for importance, etc.). These will be cleaned up later.
 
@@ -455,7 +476,7 @@ MATCH p=(:ONET_Occupation)<--(:ONET_Tools) RETURN count(p) AS num
 // #######################################################
 
 // ###################################################### Look into
-//print("Clean FOUND_IN relationships")
+//print("Clean FOUND_IN relationships
 //# gather all the different types of FOUND_IN relationships
 relationships = [x['rel'] for x in graph.run("""MATCH (a)-[r]-(b) WHERE type(r) CONTAINS 'FOUND_IN' RETURN DISTINCT type(r) AS rel .data()]
 # convert all the different types of FOUND_IN relationships to a FOUND_IN relationship with a normalized property of it's type instead
@@ -486,12 +507,12 @@ MATCH p=(:ONET_Occupation)<-[:FOUND_IN]-(:ONET_Tools) RETURN count(p) AS num
 //for cq in check_queries:
 //    results = run_reg_query(cq)['num'][0]
 //    if results <= 0:
-//        interrupt("Relationships between ONET Occupations and KSATTs  "there should be relationships")
+//        interrupt("Relationships between ONET Occupations and KSATTs  "there should be relationships
 //results = [item['rel'] for item in graph.run("""
 MATCH (a)-[r]-(b) WHERE type(r) CONTAINS 'FOUND_IN' RETURN DISTINCT type(r) AS rel
 //print(results)
 //if len(results) > 1 or 'FOUND_IN' not in results:
-//    interrupt("FOUND_IN relationship cleaning  "only FOUND_IN relationship left should be not prefixxed by anything")
+//    interrupt("FOUND_IN relationship cleaning  "only FOUND_IN relationship left should be not prefixxed by anything
 
 // ###################################################################
 
@@ -499,7 +520,7 @@ MATCH (a)-[r]-(b) WHERE type(r) CONTAINS 'FOUND_IN' RETURN DISTINCT type(r) AS r
 // concept_Schemes didn't have anything helpful.  
 // Everything from ictSkills was in transversalSkillsCollection.
 
-//print("Add skill, knowledge, language, and attitudes and value hierarchy")
+//print("Add skill, knowledge, language, and attitudes and value hierarchy
 
 //# add skill hierarchy 
  
@@ -564,7 +585,7 @@ MATCH (a:ESCO_Knowledge) RETURN count(a) AS num
 MATCH (a:ESCO_Language) RETURN count(a) AS num 
 MATCH (a:ESCO_Attitudes_Values) RETURN count(a)
 
-//print("Add additional skills to the hierarchy")
+//print("Add additional skills to the hierarchy
 
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_transversalskillscollection_en.csv' WITH HEADER AS row  
@@ -597,14 +618,14 @@ MERGE (b)<-[:SUB_ELEMENT_OF]-(c);
 //# prev_num_skills = num_skills
 //# num_skills = run_query("""MATCH (a:ESCO_Skills) RETURN count(a) AS num ['num'][0]
 //# if num_skills <= prev_num_skills:
-//#     interrupt("Additional ESCO Skills  "there should have been more ESCO Skills created")
+//#     interrupt("Additional ESCO Skills  "there should have been more ESCO Skills created
 
 //# prev_num_knowledge = num_knowledge
 //# num_knowledge = run_query("""MATCH (a:ESCO_Knowledge) RETURN count(a) AS num ['num'][0]
 //# if num_knowledge <= prev_num_knowledge:
-//#     interrupt("Additional ESCO Knowledge  "there should have been more ESCO Skills created")
+//#     interrupt("Additional ESCO Knowledge  "there should have been more ESCO Skills created
 
-//print("Add languages to the hierarchy")
+//print("Add languages to the hierarchy
 
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_languageskillscollection_en.csv' WITH HEADER AS row  
@@ -630,14 +651,14 @@ MERGE (a)<-[:SUB_ELEMENT_OF]-(b)
 //# for cq in check_queries:
 //#     results = run_query(cq)['num'][0]
 //#     if results <= 1:
-//#         interrupt("Additional ESCO KSATTs  "there should be more ESCO KSATTs or relationships between them")
+//#         interrupt("Additional ESCO KSATTs  "there should be more ESCO KSATTs or relationships between them
 
 //# prev_num_language = num_language
 //# num_language = run_query("""MATCH (a:ESCO_Language) RETURN count(a) AS num ['num'][0]
 //# if num_language <= prev_num_language:
-//#     interrupt("Additional ESCO Languages  "there should have been more ESCO Languages created")
+//#     interrupt("Additional ESCO Languages  "there should have been more ESCO Languages created
 
-//print("Add additional skills and knowledge")
+//print("Add additional skills and knowledge
 //# TODO: These don't really connect to any other parts of the hierarchy as far as I could figure out.
 
 //# add other skills
@@ -657,24 +678,24 @@ ON CREATE SET a.title = row.preferredlabel, a.alt_title = row.altlabels, a.descr
 //# prev_num_skills = num_skills
 //# num_skills = run_query("""MATCH (a:ESCO_Skills) RETURN count(a) AS num ['num'][0]
 //# if num_skills <= prev_num_skills:
-//#     interrupt("Additional ESCO Skills  "there should have been more ESCO Skills created")
+//#     interrupt("Additional ESCO Skills  "there should have been more ESCO Skills created
 
 //# prev_num_knowledge = num_knowledge
 //# num_knowledge = run_query("""MATCH (a:ESCO_Knowledge) RETURN count(a) AS num ['num'][0]
 //# if num_knowledge <= prev_num_knowledge:
-//#     interrupt("Additional ESCO Knowledge  "there should have been more ESCO Skills created")
+//#     interrupt("Additional ESCO Knowledge  "there should have been more ESCO Skills created
 
-//print("Remove circular relationships AND add IDs based off of URIs")
+//print("Remove circular relationships AND add IDs based off of URIs
 //esco_labels = ['ESCO_Skills', 'ESCO_Knowledge', 'ESCO_Language', 'ESCO_Attitudes_Values']
 //for el in esco_labels:
  MATCH (a:{})-[r:SUB_ELEMENT_OF]-(a) DELETE r RETURN count(r) AS num
-//    print("Deleted  results, "relationships.")
+//    print("Deleted  results, "relationships.
      
 MATCH (a:{})
 WITH split(a.uri, '/')[5] AS id_from_uri, a
 SET a.key = id_from_uri
 
-//print("Create occupations and groups")
+//print("Create occupations and groups
 //# create occupation groups - don't relate them yet
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/esco/trusted_iscogroups_en.csv' WITH HEADER AS row  
@@ -719,7 +740,7 @@ MATCH (a:ESCO_Occupation) WHERE NOT (:ESCO_Occupation)<--(a) AND NOT (:ESCO_Occu
 
 // UPLAOD NICE Data
 
-//print("Use table of contents to establish and relate NICE Categories, Areas and Workroles")
+//print("Use table of contents to establish and relate NICE Categories, Areas and Workroles
 
  
 LOAD CSV FROM  '/usr/lib/memgraph/import/nice/trusted_nice_areas_and_roles.csv' WITH HEADER AS row  
@@ -748,7 +769,7 @@ MERGE (a)-[:IN_CATEGORY]->(b);
 // Check
 MATCH a=(:NICE_Category)<-[:IN_CATEGORY]-(:NICE_Area)<-[:IN_AREA]-(:NICE_Workrole)-[:IN_CATEGORY]->(:OPM_Cybersecurity_Category) RETURN count(a) AS num;
 
-//print("Add NICE KSATTs and relate them to NICE Workroles")
+//print("Add NICE KSATTs and relate them to NICE Workroles
 //# add NICE_Tasks and connect to NICE_Workrole nodes
 //# don't add KSA id because there are KSAs with the same title but different IDs, and the IDs don't matter (no hierarchy or context)
  
@@ -773,7 +794,7 @@ MATCH a=(:NICE_Tasks)-[:FOUND_IN]->(:NICE_Workrole) RETURN count(a) AS num
 
 // Crosswalk OPM and ONET
 
-//print("Add in the OPM Series to ONET Occupation Crosswalk")
+//print("Add in the OPM Series to ONET Occupation Crosswalk
 
 //# create OPM Series nodes
  
@@ -790,33 +811,33 @@ MERGE (a)-[r:IN_OPM {census_code: row.`2010_eeo_tabulation_census_code`, census_
 //Check
 MATCH a=(:ONET_Occupation)-[:IN_OPM]->(:OPM_Series) RETURN count(a) AS num 
 
-//print("Equate OPM Series to ONET Occupations for specific SOC Codes")
+//print("Equate OPM Series to ONET Occupations for specific SOC Codes
 
-MATCH (a:ONET_Occupation {key: '17-2071.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855")
+MATCH (a:ONET_Occupation {key: '17-2071.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855
 MERGE (a)-[:IN_OPM {census_code: '1410', census_title: toLower('ELECTRICAL & ELECTRONIC ENGINEERS')}]->(b); 
 
-MATCH (a:ONET_Occupation {key: '17-2072.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855")
+MATCH (a:ONET_Occupation {key: '17-2072.00'}), (b:OPM_Series) WHERE b.key CONTAINS("855
 MERGE (a)-[:IN_OPM {census_code: '1410', census_title: toLower('ELECTRICAL & ELECTRONIC ENGINEERS')}]->(b); 
 
-MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854")
+MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854
 MERGE (a)-[:IN_OPM {census_code: '1400', census_title: toLower('COMPUTER HARDWARE ENGINEERS')}]->(b); 
 
 //# TODO: was 15-1111 but no SOC codes match that
-//# run_query("""MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550")
+//# run_query("""MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550
 //# MERGE (a)-[:IN_OPM {census_code: '1005', census_title: toLower('COMPUTER & INFORMATION RESEARCH SCIENTISTS')}]->(b); 
-MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550")
+MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550
 MERGE (a)-[:IN_OPM {census_code: '1005', census_title: toLower('COMPUTER & INFORMATION RESEARCH SCIENTISTS')}]->(b); 
 
 MATCH (a:ONET_Occupation), (b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS('2210')
 MERGE (a)-[:IN_OPM {census_code: '1050', census_title: toLower('COMPUTER SUPPORT SPECIALISTS')}]->(b); 
 
-//print("Check the OPM to ONET Crosswalk queries")
+//print("Check the OPM to ONET Crosswalk queries
 
 // check_queries = []
-MATCH p=(a:ONET_Occupation {key: '17-2071.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855") RETURN count(p) AS num 
-MATCH p=(a:ONET_Occupation {key: '17-2072.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855") RETURN count(p) AS num 
-MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854") RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation {key: '17-2071.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855 RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation {key: '17-2072.00'})-[:IN_OPM]->(b:OPM_Series) WHERE b.key CONTAINS("855 RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('17-206') AND b.key CONTAINS("854 RETURN count(p) AS num 
 //# TODO: same here
-# MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550") RETURN count(p) AS num 
-MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550") RETURN count(p) AS num 
-MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("2210") RETURN count(p) AS num 
+# MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1111') AND b.key CONTAINS("1550 RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("1550 RETURN count(p) AS num 
+MATCH p=(a:ONET_Occupation)-[:IN_OPM]->(b:OPM_Series) WHERE a.key CONTAINS('15-1') AND b.key CONTAINS("2210 RETURN count(p) AS num 

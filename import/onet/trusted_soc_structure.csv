@@ -8,94 +8,94 @@ broad_occupation,detailed_occupation,detailed_onet_soc,major_group,minor_group,s
 11-1020,11-1021,11-1011.03,11-0000,11-1000,General and Operations Managers
 11-1030,11-1021,11-1011.03,11-0000,11-1000,Legislators
 11-1030,11-1031,11-1011.03,11-0000,11-1000,Legislators
-11-1030,11-1031,11-1011.03,11-0000,11-2000,"Advertising, Marketing, Promotions, Public Relations, and Sales Managers"
-11-2010,11-1031,11-1011.03,11-0000,11-2000,Advertising and Promotions Managers
-11-2010,11-2011,11-1011.03,11-0000,11-2000,Advertising and Promotions Managers
-11-2020,11-2011,11-1011.03,11-0000,11-2000,Marketing and Sales Managers
-11-2020,11-2021,11-1011.03,11-0000,11-2000,Marketing Managers
-11-2020,11-2022,11-1011.03,11-0000,11-2000,Sales Managers
-11-2030,11-2022,11-1011.03,11-0000,11-2000,Public Relations and Fundraising Managers
-11-2030,11-2032,11-1011.03,11-0000,11-2000,Public Relations Managers
-11-2030,11-2033,11-1011.03,11-0000,11-2000,Fundraising Managers
-11-2030,11-2033,11-1011.03,11-0000,11-3000,Operations Specialties Managers
-11-3010,11-2033,11-1011.03,11-0000,11-3000,Administrative Services and Facilities Managers
-11-3010,11-3012,11-1011.03,11-0000,11-3000,Administrative Services Managers
-11-3010,11-3013,11-1011.03,11-0000,11-3000,Facilities Managers
-11-3010,11-3013,11-3013.01,11-0000,11-3000,Security Managers
-11-3020,11-3013,11-3013.01,11-0000,11-3000,Computer and Information Systems Managers
-11-3020,11-3021,11-3013.01,11-0000,11-3000,Computer and Information Systems Managers
-11-3030,11-3021,11-3013.01,11-0000,11-3000,Financial Managers
-11-3030,11-3031,11-3013.01,11-0000,11-3000,Financial Managers
-11-3030,11-3031,11-3031.01,11-0000,11-3000,Treasurers and Controllers
-11-3030,11-3031,11-3031.03,11-0000,11-3000,Investment Fund Managers
-11-3050,11-3031,11-3031.03,11-0000,11-3000,Industrial Production Managers
-11-3050,11-3051,11-3031.03,11-0000,11-3000,Industrial Production Managers
-11-3050,11-3051,11-3051.01,11-0000,11-3000,Quality Control Systems Managers
-11-3050,11-3051,11-3051.02,11-0000,11-3000,Geothermal Production Managers
-11-3050,11-3051,11-3051.03,11-0000,11-3000,Biofuels Production Managers
-11-3050,11-3051,11-3051.04,11-0000,11-3000,Biomass Power Plant Managers
-11-3050,11-3051,11-3051.06,11-0000,11-3000,Hydroelectric Production Managers
-11-3060,11-3051,11-3051.06,11-0000,11-3000,Purchasing Managers
-11-3060,11-3061,11-3051.06,11-0000,11-3000,Purchasing Managers
-11-3070,11-3061,11-3051.06,11-0000,11-3000,"Transportation, Storage, and Distribution Managers"
-11-3070,11-3071,11-3051.06,11-0000,11-3000,"Transportation, Storage, and Distribution Managers"
-11-3070,11-3071,11-3071.04,11-0000,11-3000,Supply Chain Managers
-11-3110,11-3071,11-3071.04,11-0000,11-3000,Compensation and Benefits Managers
-11-3110,11-3111,11-3071.04,11-0000,11-3000,Compensation and Benefits Managers
-11-3120,11-3111,11-3071.04,11-0000,11-3000,Human Resources Managers
-11-3120,11-3121,11-3071.04,11-0000,11-3000,Human Resources Managers
-11-3130,11-3121,11-3071.04,11-0000,11-3000,Training and Development Managers
-11-3130,11-3131,11-3071.04,11-0000,11-3000,Training and Development Managers
-11-3130,11-3131,11-3071.04,11-0000,11-9000,Other Management Occupations
-11-9010,11-3131,11-3071.04,11-0000,11-9000,"Farmers, Ranchers, and Other Agricultural Managers"
-11-9010,11-9013,11-3071.04,11-0000,11-9000,"Farmers, Ranchers, and Other Agricultural Managers"
-11-9020,11-9013,11-3071.04,11-0000,11-9000,Construction Managers
-11-9020,11-9021,11-3071.04,11-0000,11-9000,Construction Managers
-11-9030,11-9021,11-3071.04,11-0000,11-9000,Education and Childcare Administrators
-11-9030,11-9031,11-3071.04,11-0000,11-9000,"Education and Childcare Administrators, Preschool and Daycare"
-11-9030,11-9032,11-3071.04,11-0000,11-9000,"Education Administrators, Kindergarten through Secondary"
-11-9030,11-9033,11-3071.04,11-0000,11-9000,"Education Administrators, Postsecondary"
-11-9030,11-9039,11-3071.04,11-0000,11-9000,"Education Administrators, All Other"
-11-9040,11-9039,11-3071.04,11-0000,11-9000,Architectural and Engineering Managers
-11-9040,11-9041,11-3071.04,11-0000,11-9000,Architectural and Engineering Managers
-11-9040,11-9041,11-9041.01,11-0000,11-9000,Biofuels/Biodiesel Technology and Product Development Managers
-11-9050,11-9041,11-9041.01,11-0000,11-9000,Food Service Managers
-11-9050,11-9051,11-9041.01,11-0000,11-9000,Food Service Managers
-11-9070,11-9051,11-9041.01,11-0000,11-9000,Entertainment and Recreation Managers
-11-9070,11-9071,11-9041.01,11-0000,11-9000,Gambling Managers
-11-9070,11-9072,11-9041.01,11-0000,11-9000,"Entertainment and Recreation Managers, Except Gambling"
-11-9080,11-9072,11-9041.01,11-0000,11-9000,Lodging Managers
-11-9080,11-9081,11-9041.01,11-0000,11-9000,Lodging Managers
-11-9110,11-9081,11-9041.01,11-0000,11-9000,Medical and Health Services Managers
-11-9110,11-9111,11-9041.01,11-0000,11-9000,Medical and Health Services Managers
-11-9120,11-9111,11-9041.01,11-0000,11-9000,Natural Sciences Managers
-11-9120,11-9121,11-9041.01,11-0000,11-9000,Natural Sciences Managers
-11-9120,11-9121,11-9121.01,11-0000,11-9000,Clinical Research Coordinators
-11-9120,11-9121,11-9121.02,11-0000,11-9000,Water Resource Specialists
-11-9130,11-9121,11-9121.02,11-0000,11-9000,Postmasters and Mail Superintendents
-11-9130,11-9131,11-9121.02,11-0000,11-9000,Postmasters and Mail Superintendents
-11-9140,11-9131,11-9121.02,11-0000,11-9000,"Property, Real Estate, and Community Association Managers"
-11-9140,11-9141,11-9121.02,11-0000,11-9000,"Property, Real Estate, and Community Association Managers"
-11-9150,11-9141,11-9121.02,11-0000,11-9000,Social and Community Service Managers
-11-9150,11-9151,11-9121.02,11-0000,11-9000,Social and Community Service Managers
-11-9160,11-9151,11-9121.02,11-0000,11-9000,Emergency Management Directors
-11-9160,11-9161,11-9121.02,11-0000,11-9000,Emergency Management Directors
-11-9170,11-9161,11-9121.02,11-0000,11-9000,Personal Service Managers
-11-9170,11-9171,11-9121.02,11-0000,11-9000,Funeral Home Managers
-11-9170,11-9179,11-9121.02,11-0000,11-9000,"Personal Service Managers, All Other"
-11-9170,11-9179,11-9179.01,11-0000,11-9000,Fitness and Wellness Coordinators
-11-9170,11-9179,11-9179.02,11-0000,11-9000,Spa Managers
-11-9190,11-9179,11-9179.02,11-0000,11-9000,Miscellaneous Managers
-11-9190,11-9199,11-9179.02,11-0000,11-9000,"Managers, All Other"
-11-9190,11-9199,11-9199.01,11-0000,11-9000,Regulatory Affairs Managers
-11-9190,11-9199,11-9199.02,11-0000,11-9000,Compliance Managers
-11-9190,11-9199,11-9199.08,11-0000,11-9000,Loss Prevention Managers
-11-9190,11-9199,11-9199.09,11-0000,11-9000,Wind Energy Operations Managers
-11-9190,11-9199,11-9199.10,11-0000,11-9000,Wind Energy Development Managers
-11-9190,11-9199,11-9199.11,11-0000,11-9000,Brownfield Redevelopment Specialists and Site Managers
-11-9190,11-9199,11-9199.11,13-0000,11-9000,Business and Financial Operations Occupations
-11-9190,11-9199,11-9199.11,13-0000,13-1000,Business Operations Specialists
-13-1010,11-9199,11-9199.11,13-0000,13-1000,"Agents and Business Managers of Artists, Performers, and Athletes"
+11-1030,11-1031,11-1011.03,11-0000,Nov-00,"Advertising, Marketing, Promotions, Public Relations, and Sales Managers"
+Nov-10,11-1031,11-1011.03,11-0000,Nov-00,Advertising and Promotions Managers
+Nov-10,Nov-11,11-1011.03,11-0000,Nov-00,Advertising and Promotions Managers
+Nov-20,Nov-11,11-1011.03,11-0000,Nov-00,Marketing and Sales Managers
+Nov-20,Nov-21,11-1011.03,11-0000,Nov-00,Marketing Managers
+Nov-20,Nov-22,11-1011.03,11-0000,Nov-00,Sales Managers
+Nov-30,Nov-22,11-1011.03,11-0000,Nov-00,Public Relations and Fundraising Managers
+Nov-30,Nov-32,11-1011.03,11-0000,Nov-00,Public Relations Managers
+Nov-30,Nov-33,11-1011.03,11-0000,Nov-00,Fundraising Managers
+Nov-30,Nov-33,11-1011.03,11-0000,Nov-00,Operations Specialties Managers
+Nov-10,Nov-33,11-1011.03,11-0000,Nov-00,Administrative Services and Facilities Managers
+Nov-10,Nov-12,11-1011.03,11-0000,Nov-00,Administrative Services Managers
+Nov-10,Nov-13,11-1011.03,11-0000,Nov-00,Facilities Managers
+Nov-10,Nov-13,11-3013.01,11-0000,Nov-00,Security Managers
+Nov-20,Nov-13,11-3013.01,11-0000,Nov-00,Computer and Information Systems Managers
+Nov-20,Nov-21,11-3013.01,11-0000,Nov-00,Computer and Information Systems Managers
+Nov-30,Nov-21,11-3013.01,11-0000,Nov-00,Financial Managers
+Nov-30,Nov-31,11-3013.01,11-0000,Nov-00,Financial Managers
+Nov-30,Nov-31,11-3031.01,11-0000,Nov-00,Treasurers and Controllers
+Nov-30,Nov-31,11-3031.03,11-0000,Nov-00,Investment Fund Managers
+Nov-50,Nov-31,11-3031.03,11-0000,Nov-00,Industrial Production Managers
+Nov-50,Nov-51,11-3031.03,11-0000,Nov-00,Industrial Production Managers
+Nov-50,Nov-51,11-3051.01,11-0000,Nov-00,Quality Control Systems Managers
+Nov-50,Nov-51,11-3051.02,11-0000,Nov-00,Geothermal Production Managers
+Nov-50,Nov-51,11-3051.03,11-0000,Nov-00,Biofuels Production Managers
+Nov-50,Nov-51,11-3051.04,11-0000,Nov-00,Biomass Power Plant Managers
+Nov-50,Nov-51,11-3051.06,11-0000,Nov-00,Hydroelectric Production Managers
+Nov-60,Nov-51,11-3051.06,11-0000,Nov-00,Purchasing Managers
+Nov-60,Nov-61,11-3051.06,11-0000,Nov-00,Purchasing Managers
+Nov-70,Nov-61,11-3051.06,11-0000,Nov-00,"Transportation, Storage, and Distribution Managers"
+Nov-70,Nov-71,11-3051.06,11-0000,Nov-00,"Transportation, Storage, and Distribution Managers"
+Nov-70,Nov-71,11-3071.04,11-0000,Nov-00,Supply Chain Managers
+Nov-10,Nov-71,11-3071.04,11-0000,Nov-00,Compensation and Benefits Managers
+Nov-10,Nov-11,11-3071.04,11-0000,Nov-00,Compensation and Benefits Managers
+Nov-20,Nov-11,11-3071.04,11-0000,Nov-00,Human Resources Managers
+Nov-20,Nov-21,11-3071.04,11-0000,Nov-00,Human Resources Managers
+Nov-30,Nov-21,11-3071.04,11-0000,Nov-00,Training and Development Managers
+Nov-30,Nov-31,11-3071.04,11-0000,Nov-00,Training and Development Managers
+Nov-30,Nov-31,11-3071.04,11-0000,Nov-00,Other Management Occupations
+Nov-10,Nov-31,11-3071.04,11-0000,Nov-00,"Farmers, Ranchers, and Other Agricultural Managers"
+Nov-10,Nov-13,11-3071.04,11-0000,Nov-00,"Farmers, Ranchers, and Other Agricultural Managers"
+Nov-20,Nov-13,11-3071.04,11-0000,Nov-00,Construction Managers
+Nov-20,Nov-21,11-3071.04,11-0000,Nov-00,Construction Managers
+Nov-30,Nov-21,11-3071.04,11-0000,Nov-00,Education and Childcare Administrators
+Nov-30,Nov-31,11-3071.04,11-0000,Nov-00,"Education and Childcare Administrators, Preschool and Daycare"
+Nov-30,Nov-32,11-3071.04,11-0000,Nov-00,"Education Administrators, Kindergarten through Secondary"
+Nov-30,Nov-33,11-3071.04,11-0000,Nov-00,"Education Administrators, Postsecondary"
+Nov-30,Nov-39,11-3071.04,11-0000,Nov-00,"Education Administrators, All Other"
+Nov-40,Nov-39,11-3071.04,11-0000,Nov-00,Architectural and Engineering Managers
+Nov-40,Nov-41,11-3071.04,11-0000,Nov-00,Architectural and Engineering Managers
+Nov-40,Nov-41,11-9041.01,11-0000,Nov-00,Biofuels/Biodiesel Technology and Product Development Managers
+Nov-50,Nov-41,11-9041.01,11-0000,Nov-00,Food Service Managers
+Nov-50,Nov-51,11-9041.01,11-0000,Nov-00,Food Service Managers
+Nov-70,Nov-51,11-9041.01,11-0000,Nov-00,Entertainment and Recreation Managers
+Nov-70,Nov-71,11-9041.01,11-0000,Nov-00,Gambling Managers
+Nov-70,Nov-72,11-9041.01,11-0000,Nov-00,"Entertainment and Recreation Managers, Except Gambling"
+Nov-80,Nov-72,11-9041.01,11-0000,Nov-00,Lodging Managers
+Nov-80,Nov-81,11-9041.01,11-0000,Nov-00,Lodging Managers
+Nov-10,Nov-81,11-9041.01,11-0000,Nov-00,Medical and Health Services Managers
+Nov-10,Nov-11,11-9041.01,11-0000,Nov-00,Medical and Health Services Managers
+Nov-20,Nov-11,11-9041.01,11-0000,Nov-00,Natural Sciences Managers
+Nov-20,Nov-21,11-9041.01,11-0000,Nov-00,Natural Sciences Managers
+Nov-20,Nov-21,11-9121.01,11-0000,Nov-00,Clinical Research Coordinators
+Nov-20,Nov-21,11-9121.02,11-0000,Nov-00,Water Resource Specialists
+Nov-30,Nov-21,11-9121.02,11-0000,Nov-00,Postmasters and Mail Superintendents
+Nov-30,Nov-31,11-9121.02,11-0000,Nov-00,Postmasters and Mail Superintendents
+Nov-40,Nov-31,11-9121.02,11-0000,Nov-00,"Property, Real Estate, and Community Association Managers"
+Nov-40,Nov-41,11-9121.02,11-0000,Nov-00,"Property, Real Estate, and Community Association Managers"
+Nov-50,Nov-41,11-9121.02,11-0000,Nov-00,Social and Community Service Managers
+Nov-50,Nov-51,11-9121.02,11-0000,Nov-00,Social and Community Service Managers
+Nov-60,Nov-51,11-9121.02,11-0000,Nov-00,Emergency Management Directors
+Nov-60,Nov-61,11-9121.02,11-0000,Nov-00,Emergency Management Directors
+Nov-70,Nov-61,11-9121.02,11-0000,Nov-00,Personal Service Managers
+Nov-70,Nov-71,11-9121.02,11-0000,Nov-00,Funeral Home Managers
+Nov-70,Nov-79,11-9121.02,11-0000,Nov-00,"Personal Service Managers, All Other"
+Nov-70,Nov-79,11-9179.01,11-0000,Nov-00,Fitness and Wellness Coordinators
+Nov-70,Nov-79,11-9179.02,11-0000,Nov-00,Spa Managers
+Nov-90,Nov-79,11-9179.02,11-0000,Nov-00,Miscellaneous Managers
+Nov-90,Nov-99,11-9179.02,11-0000,Nov-00,"Managers, All Other"
+Nov-90,Nov-99,11-9199.01,11-0000,Nov-00,Regulatory Affairs Managers
+Nov-90,Nov-99,11-9199.02,11-0000,Nov-00,Compliance Managers
+Nov-90,Nov-99,11-9199.08,11-0000,Nov-00,Loss Prevention Managers
+Nov-90,Nov-99,11-9199.09,11-0000,Nov-00,Wind Energy Operations Managers
+Nov-90,Nov-99,11-9199.10,11-0000,Nov-00,Wind Energy Development Managers
+Nov-90,Nov-99,11-9199.11,11-0000,Nov-00,Brownfield Redevelopment Specialists and Site Managers
+Nov-90,Nov-99,11-9199.11,13-0000,Nov-00,Business and Financial Operations Occupations
+Nov-90,Nov-99,11-9199.11,13-0000,13-1000,Business Operations Specialists
+13-1010,Nov-99,11-9199.11,13-0000,13-1000,"Agents and Business Managers of Artists, Performers, and Athletes"
 13-1010,13-1011,11-9199.11,13-0000,13-1000,"Agents and Business Managers of Artists, Performers, and Athletes"
 13-1020,13-1011,11-9199.11,13-0000,13-1000,Buyers and Purchasing Agents
 13-1020,13-1021,11-9199.11,13-0000,13-1000,"Buyers and Purchasing Agents, Farm Products"
@@ -1209,7 +1209,7 @@ broad_occupation,detailed_occupation,detailed_onet_soc,major_group,minor_group,s
 47-5040,47-5032,47-4099.03,47-0000,47-5000,Underground Mining Machine Operators
 47-5040,47-5041,47-4099.03,47-0000,47-5000,Continuous Mining Machine Operators
 47-5040,47-5043,47-4099.03,47-0000,47-5000,"Roof Bolters, Mining"
-47-5040,47-5044,47-4099.03,47-0000,47-5000, LOADing and Moving Machine Operators, Underground Mining"
+47-5040,47-5044,47-4099.03,47-0000,47-5000, LOADing and Moving Machine Operators Underground Mining
 47-5040,47-5049,47-4099.03,47-0000,47-5000,"Underground Mining Machine Operators, All Other"
 47-5050,47-5049,47-4099.03,47-0000,47-5000,"Rock Splitters, Quarry"
 47-5050,47-5051,47-4099.03,47-0000,47-5000,"Rock Splitters, Quarry"
